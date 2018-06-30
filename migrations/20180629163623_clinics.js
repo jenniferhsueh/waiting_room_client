@@ -14,3 +14,5 @@ exports.up = function(knex, Promise) {
       knex.schema.dropTable('clinics')
     ])
   };
+
+  test
