@@ -4,10 +4,61 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('clinics').returning('*').insert([
-        {name: 'one', phone_number: 234124, hours_operation: 5},
-        {name: 'two', phone_number: 1234123, hours_operation: 5},
-        {name: 'three', phone_number: 124412, hours_operation: 5},
-        {name: 'four', phone_number: 123441, hours_operation: 5}
+        { 
+          name: 'Loyal Medical Clinic', 
+          phone: 6044288313, 
+          hours: {
+            Monday: "9:00am - 6:00pm",
+            Tuesday: "9:00am - 6:00pm",
+            Wednesday: "9:00am - 6:00pm",
+            Thursday: "9:00am - 6:00pm",
+            Friday: "9:00am - 6:00pm",
+            Saturday: "Closed",
+            Sunday: "Closed"
+          },
+          avg_wait_time: 900,
+          location: {
+            address1:'1055 Dunsmuir St',
+            address2: "",
+            address3: "",
+            city: "Vancouver",
+            state: "BC",
+            Zipcode: "V7X 1L3",
+            country: "Canada",
+          },
+          coordinates: {
+            lat: "49.286494", 
+            long: "-123.121436"
+          }
+        },
+        { 
+          name: 'Ultima Medicentre', 
+          phone: 6046838138, 
+          hours: {
+            Monday: "Closed",
+            Tuesday: "8:00am - 4:00pm",
+            Wednesday: "8:00am - 4:00pm",
+            Thursday: "8:00am - 4:00pm",
+            Friday: "8:00am - 4:00pm",
+            Saturday: "Closed",
+            Sunday: "Closed"
+          },
+          avg_wait_time: 1800,
+          location: {
+            address1:'1055 W Georgia St, Unit 112',
+            address2: "",
+            address3: "",
+            city: "Vancouver",
+            state: "BC",
+            Zipcode: "V6E 3P3",
+            country: "Canada",
+
+          },
+          coordinates: {
+            lat: "49.285391", 
+            long: "-123.121550"
+          }
+        }
       ]);
     });
 };

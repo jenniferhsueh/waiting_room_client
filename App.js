@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableHighlight, Text, View, Image, TextInput, ScrollView, Button, Alert, KeyboardAvoidingView } from 'react-native';
-import { styles } from './styles'
+import { styles } from './assets/styles'
 
 class Greeting extends Component {
   render() {
