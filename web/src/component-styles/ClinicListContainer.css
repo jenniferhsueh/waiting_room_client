@@ -1,0 +1,8 @@
+.list-container {
+  display:block;
+  position: relative;
+  /*background-color: pink;*/
+  width: 30%;
+  height: 100%;
+
+}

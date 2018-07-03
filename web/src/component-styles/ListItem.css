@@ -1,0 +1,32 @@
+.list-item {
+  /*background-color: antiquewhite;*/
+  height: 100px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 3px;
+  box-shadow: 0 4px 2px -2px gray
+}
+
+.name-placeholder {
+  font-size: 26px;
+  font-family: 'Cinzel', serif;
+  margin-left: 40px;
+  padding-top: 10px;
+}
+
+.wait-placeholder {
+  font-family: 'Cinzel', serif;
+  float: right;
+  margin-right: 20px;
+  margin-top: -25px;
+}
+
+.info-placeholder {
+  word-wrap:break-word;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px;
+  margin-left: 31px;
+}
