@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import '../component-styles/ListItem.css';
 
 class ClinicListItem extends Component {
+
   render() {
     return (
-      <div className="list-item">
+      <div className="list-item" onClick={this.props.openModal}>
         <div className="name-placeholder">
-          Clinic
+          {this.props.item.name}
         </div>
         <div className="wait-placeholder">
-          30 Mins
+          {this.props.item.wait}
         </div>
         <div className="info-placeholder">
-          Tumblr four dollar toast brooklyn literally, next level nisi fam kinfolk.
+          {this.props.item.address}
         </div>
       </div>
     )
   }
 }
-
 
 export default ClinicListItem;
 

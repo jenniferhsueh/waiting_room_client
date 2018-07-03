@@ -1,0 +1,25 @@
+.title {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  justify-content: space-around;
+  height:30px;
+  width:50%;
+  margin: auto;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 5px;
+  background: tomato;
+}
+
+.link {
+  text-align: center;
+  justify-content: space-around;
+}
+
+.styles_modal__gNwvD {
+  border-radius: 5px;
+}
