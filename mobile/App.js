@@ -1,30 +1,65 @@
-import React, { Component } from 'react';
-import { TouchableHighlight, Text, View, Image, TextInput, ScrollView, Button, Alert, KeyboardAvoidingView } from 'react-native';
-import { styles } from './assets/styles'
+import React, { Component } from 'react'
+import { AppRegistry, View, Text } from 'react-native'
 
-class Greeting extends Component {
-  render() {
-    return (
-      <Text>Hello {this.props.name}!</Text>
-    )}
-}
+import List from './List'
+import Input from './Input'
+import Title from './Title'
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { count: 0 }
+export default class App extends Component {
+
+  state = {
+    todos: ['Click to remove', 'Learn React Native', 'Write Code', 'Ship App'],
+    users: [{
+      id: 1,
+      username: "samsepi0l"
+    }, {
+      id: 2,
+      username: "D0loresH4ze"
+    }]
   }
-  
+
+  onAddTodo = (text) => {
+    const {todos} = this.state
+
+    this.setState({
+      todos: [text, ...todos],
+    })
+  }
+
+  onRemoveTodo = (index) => {
+    const {todos} = this.state
+
+    this.setState({
+      todos: todos.filter((todo, i) => i !== index),
+    })
+  }
+
   render() {
-    let pic = {
-      uri: "http://images6.fanpop.com/image/photos/34700000/fluffy-dog-dogs-34707073-500-319.jpg"
-    };
-    
+    const {todos, users} = this.state
+
     return (
-      <View style={styles.container}>
-        <Greeting />
+      <View>
+        <Title>
+          To-Do List
+        </Title>
+        <Input
+          placeholder={'Type a todo, then hit enter!'}
+          onSubmitEditing={this.onAddTodo}
+        />
+        <List
+          list={todos}
+          onPressItem={this.onRemoveTodo}
+        />
+        <Title>
+          Users
+        </Title>
+        {users.map( (user) => <Text key={user.id}>{user.username}</Text> )}
+        {/* <List
+          {users.map( (user) => {
+            <Text>user.name</Text>
+          })}
+        /> */}
       </View>
-    );
+    )
   }
 }
-
