@@ -1,5 +1,4 @@
 .list-item {
-  /*background-color: antiquewhite;*/
   height: 100px;
   width: 100%;
   border-bottom: 1px solid black;
@@ -7,6 +6,10 @@
   border-bottom-right-radius: 5px;
   margin-bottom: 3px;
   box-shadow: 0 4px 2px -2px gray
+}
+
+.list-item:hover {
+  background-color: orange;
 }
 
 .name-placeholder {

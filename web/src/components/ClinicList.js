@@ -9,7 +9,9 @@ class ClinicList extends Component {
         <ClinicListItem />
         <ClinicListItem />
         <ClinicListItem />
-
+        <ClinicListItem />
+        <ClinicListItem />
+        <ClinicListItem />
       </div>
     )
   }
