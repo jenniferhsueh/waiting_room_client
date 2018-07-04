@@ -34,6 +34,8 @@ export default class ListEntry extends Component {
             <ListItem
               key={i}
               title={place.name}
+              subtitle={place.phone}
+              // subtitle={place.location}
             />
           ))
         }
