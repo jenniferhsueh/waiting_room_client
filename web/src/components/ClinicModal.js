@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import Modal from 'react-responsive-modal';
 import '../component-styles/ClinicModal.css';
 

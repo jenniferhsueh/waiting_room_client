@@ -3,7 +3,6 @@ import './App.css';
 import Nav from './components/Nav.js';
 import ClinicList from './components/ClinicList.js';
 import MapBox from './components/MapBox.js';
-import ClinicModal from './components/ClinicModal.js';
 
 
 class App extends Component {
