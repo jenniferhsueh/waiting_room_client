@@ -21,7 +21,7 @@ export default class NavButtons extends Component {
   
     return (
       <View style={styles.container} >
-        <ButtonGroup style={{padding: 0}}
+        <ButtonGroup 
           onPress={this.updateIndex}
           selectedIndex={selectedIndex}
           buttons={buttons}
@@ -34,8 +34,7 @@ export default class NavButtons extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 10,
     alignItems: 'center',
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#ecf0f1'
   },
 });
