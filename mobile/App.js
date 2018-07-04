@@ -4,6 +4,7 @@ import Map from "./components/Map"
 import { Location, Permissions } from "expo"
 import YelpService from "./yelp"
 import Navbar from "./components/Navbar"
+import NavButtons from "./components/NavButtons"
 
 
 const region = {
@@ -63,6 +64,7 @@ export default class App extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <Navbar />
+        <NavButtons />
         <Map region={region} places={coffeeShops} />
       </SafeAreaView>
     );

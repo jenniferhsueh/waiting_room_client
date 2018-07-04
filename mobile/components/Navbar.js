@@ -8,7 +8,7 @@ export default class Navbar extends Component {
       <View style={styles.container}>
       <Header
         leftComponent={{ icon: 'home', color: '#fff' }}
-        centerComponent={{ text: 'MY TITLE', style: { color: 'pink' } }}
+        centerComponent={{ text: 'FLUFFY BUNNIES', style: { color: '#fff' } }}
         rightComponent={{ icon: 'menu', color: '#fff' }}
         />
       </View>
@@ -20,5 +20,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: "100%",
+    backgroundColor: "red"
   },
 })

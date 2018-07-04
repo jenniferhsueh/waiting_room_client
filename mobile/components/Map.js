@@ -30,7 +30,7 @@ const styles = {
   map: {
     left: 0,
     right:0,
-    top: "15%",
+    top: "20%",
     bottom: 0,
     position: 'absolute'
   }
