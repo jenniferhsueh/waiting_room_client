@@ -1,8 +1,9 @@
 import React from "react"
-import { StyleSheet, Text, View, SafeAreaView, } from "react-native"
-import Map from "./Map"
-import { Location, Permissions, MapView } from "expo"
+import { StyleSheet, SafeAreaView } from "react-native"
+import Map from "./components/Map"
+import { Location, Permissions } from "expo"
 import YelpService from "./yelp"
+import Navbar from "./components/Navbar"
 
 
 const region = {
@@ -61,6 +62,7 @@ export default class App extends React.Component {
     
     return (
       <SafeAreaView style={styles.container}>
+        <Navbar />
         <Map region={region} places={coffeeShops} />
       </SafeAreaView>
     );
