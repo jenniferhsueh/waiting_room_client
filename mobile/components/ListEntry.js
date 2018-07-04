@@ -18,22 +18,22 @@ const list = [
 export default class ListEntry extends Component {
 
   keyExtractor = (item, index) => index
-  renderItem = ({ item }) => (
-    <ListItem
-      title={item.name}
-      subtitle={item.subtitle}
-    />
-  )
+  // renderItem = ({ item }) => (
+  //   <ListItem
+  //     title={item.name}
+  //     subtitle={item.subtitle}
+  //   />
+
+
+
   render() {
     return (
       <View style={styles.container} >
         {
-          list.map((l, i) => (
+          this.props.places.map((place, i) => (
             <ListItem
               key={i}
-              leftAvatar={{ source: { uri: l.avatar_url } }}
-              title={l.name}
-              subtitle={l.subtitle}
+              title={place.name}
             />
           ))
         }
