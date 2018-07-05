@@ -27,7 +27,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.get('/businesses', (req, res) => {
   request({
-    url: 'https://api.yelp.com/v3/businesses/search?latitude=49.2838799&longitude=-123.1107835',
+    url: 'https://api.yelp.com/v3/businesses/search?latitude=49.2838799&longitude=-123.1107835&categories=walkinclinics',
     auth: {
       bearer: yelpToken
     }
