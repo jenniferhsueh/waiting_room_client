@@ -49,9 +49,8 @@ class RegisterModal extends Component {
                 <ControlLabel>First Name</ControlLabel>
                 <FormControl
                   autoFocus
-                  type="name"
-                  /*{value={this.state.firstName}}*/
-                  /* uncommenting this field prevents form input because state is set to "". but why not email??? */
+                  type="text"
+                  value={this.state.firstName}
                   onChange={this.handleChange}
                 />
               </FormGroup>
@@ -59,9 +58,8 @@ class RegisterModal extends Component {
               <FormGroup className="last-name" controlId="last-name" bsSize="large">
                 <ControlLabel>Last Name</ControlLabel>
                 <FormControl
-                  type="name"
-                  /*value={this.state.lastName}*/
-                  /*uncommenting this field prevents form input because state is set to "". but why not email???*/
+                  type="text"
+                  value={this.state.lastName}
                   onChange={this.handleChange}
                 />
               </FormGroup>
@@ -87,8 +85,7 @@ class RegisterModal extends Component {
               <FormGroup className="pw-confirm" controlId="password" bsSize="large">
                 <ControlLabel>Confirm Password</ControlLabel>
                 <FormControl
-                  /*value={this.state.pwConfirm}*/
-                  /*uncommenting this field prevents form input because state is set to "". but why not email???*/
+                  value={this.state.pwConfirm}
                   onChange={this.handleChange}
                   type="password"
                 />

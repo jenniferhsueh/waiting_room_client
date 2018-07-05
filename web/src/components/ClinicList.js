@@ -9,7 +9,11 @@ class ClinicList extends Component {
     open: false,
     clinics: [
       {name: 'Clinic A', address: '123 Evergreen Terrace', wait: '30 Mins'},
-      {name: 'Clinic B', address: '129 w 81 st', wait: '30 Mins'}
+      {name: 'Clinic B', address: '129 w 81 st', wait: '30 Mins'},
+      {name: 'Clinic C', address: '8677 Heinous Ave ', wait: '3 Mins'},
+      {name: 'Clinic D', address: '4 Sad Lane', wait: '0 Mins'},
+      {name: 'Clinic E', address: '27088 hwy 10', wait: '30 Mins'},
+      {name: 'Clinic G', address: '903 Yomamma Dr', wait: '30 Mins'}
     ]
   };
 
