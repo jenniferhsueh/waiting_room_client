@@ -10,8 +10,10 @@ class App extends Component {
     return (
      <div className="main-container">
         <Nav />
-        <ClinicList />
-        <MapBox />
+        <div className="body-container">
+          <ClinicList />
+          <MapBox />
+        </div>
       </div>
     )
   }

@@ -11,7 +11,7 @@ class ClinicListItem extends Component {
           {console.log("CLINIC NAME", this.props.item.name)}
         </div>
         <div className="wait-placeholder">
-          // {this.props.item.wait}
+          {/*{this.props.item.wait}*/}
         </div>
         <div className="info-placeholder">
           {this.props.item.location.address1}

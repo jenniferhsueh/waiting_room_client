@@ -36,15 +36,11 @@ class ClinicList extends Component {
 
     // console.log('==========>', this.state.clinics)
     return (
-      <div>
-
       <div className="list-container">
 {/*        {console.log("CLINIC LIST", this.state.clinics)}
 */}        {this.state.clinics.map(clinic => <ClinicListItem key={clinic.id} openModal={() => this.onListItemClick(clinic)} item={clinic}/>)}
         }
-      </div>
-      {this.state.modalClinic && <ClinicModal item={this.state.modalClinic} onCloseModal={this.onCloseModal}/>
-}
+      {this.state.modalClinic && <ClinicModal item={this.state.modalClinic} onCloseModal={this.onCloseModal}/>}
       </div>
     )
   }
