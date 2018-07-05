@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import Modal from 'react-responsive-modal';
 import logo from '../assets/clock-logo.svg';
+import RegisterModal from '../components/RegisterModal'
+import LoginModal from '../components/LoginModal'
 import '../component-styles/nav.css';
 
 class Nav extends Component {
+  state = {
+    open: false
+  }
+
   render() {
+    const { open } = this.state;
     return (
       <div className="App">
         <div className="nav">
@@ -12,8 +20,8 @@ class Nav extends Component {
           <div className="nav-right">
             <div className="item">For Patients</div>
             <div className="item">For Clinics</div>
-            <div className="item">Register</div>
-            <div className="item">Login</div>
+            <RegisterModal open={ open }/>
+            <LoginModal open={ open }/>
           </div>
         </div>
       </div>

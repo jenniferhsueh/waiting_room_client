@@ -7,10 +7,7 @@ import ClinicModal from './ClinicModal';
 class ClinicList extends Component {
   state = {
     open: false,
-    clinics: [
-      {name: 'Clinic A', address: '123 Evergreen Terrace', wait: '30 Mins'},
-      {name: 'Clinic B', address: '129 w 81 st', wait: '30 Mins'}
-    ]
+    clinics: []
   };
 
   onCloseModal = () => {
@@ -21,11 +18,30 @@ class ClinicList extends Component {
     this.setState({modalClinic})
   };
 
+  componentWillMount() {
+            fetch('/businesses')
+    .then(results => {
+      return results.json();
+    }).then(data => {
+
+        this.setState({
+          clinics: data.businesses
+        })
+      // return this.state.clinics
+    })
+
+  }
+
   render() {
+
+    // console.log('==========>', this.state.clinics)
     return (
       <div>
+
       <div className="list-container">
-        {this.state.clinics.map(clinic => <ClinicListItem key={clinic.name} openModal={() => this.onListItemClick(clinic)} item={clinic}/>)}
+{/*        {console.log("CLINIC LIST", this.state.clinics)}
+*/}        {this.state.clinics.map(clinic => <ClinicListItem key={clinic.id} openModal={() => this.onListItemClick(clinic)} item={clinic}/>)}
+        }
       </div>
       {this.state.modalClinic && <ClinicModal item={this.state.modalClinic} onCloseModal={this.onCloseModal}/>
 }
