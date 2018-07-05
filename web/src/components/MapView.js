@@ -23,8 +23,6 @@ class MapView extends Component {
       return results.json();
     }).then(data => {
       this.setState(previousState => {
-        // console.log("previouse State ===>", data.businesses)
-        { clinics: previousState.clinics }
       })
       return this.state.clinics
     })
@@ -40,7 +38,7 @@ mapboxApiAccessToken={'pk.eyJ1Ijoicm9ic2Nod2l0emVyIiwiYSI6ImNqajd4bTl5YzJxZnQzdm
         onViewportChange={(viewport) => this.setState({viewport})}
       >
           <Marker latitude={49.2823760} longitude={-123.1090515} offsetLeft={-20} offsetTop={-10}>
-            <div>💰</div>
+            <span role="img">💰</span>
           </Marker>
         </ReactMapGL>
       </div>

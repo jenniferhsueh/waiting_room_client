@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Modal from 'react-responsive-modal';
 import logo from '../assets/clock-logo.svg';
 import RegisterModal from '../components/RegisterModal'
 import LoginModal from '../components/LoginModal'

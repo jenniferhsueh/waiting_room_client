@@ -3,11 +3,12 @@
   border-right: 1px solid black;
   border-bottom-right-radius: 5px;
   margin-bottom: 3px;
-  box-shadow: 0 4px 2px -2px gray
+  box-shadow: 0 4px 2px -2px gray;
+
 }
 
 .list-item:hover {
-  background-color: tomato;
+  background-color: #7ABDC7;
 }
 
 .name-placeholder {
@@ -15,6 +16,9 @@
   font-family: 'Cinzel', serif;
   margin-left: 40px;
   padding-top: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .wait-placeholder {

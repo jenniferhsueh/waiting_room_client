@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
+import React from 'react';
 import Modal from 'react-responsive-modal';
 import '../component-styles/ClinicModal.css';
 
@@ -8,7 +7,7 @@ function ClinicModal({item, onCloseModal}){
           <h2 className="title">Wait Time: {item.wait}</h2>
           <button className="button">Get In line</button><br />
           <div className="link">
-            <a href="#">Login</a> or <a href="#">Sign up</a>
+            <a href="">Login</a> or <a href="">Sign up</a>
           </div></div>)
   return <div className="clinic-modal">
         <Modal open={!!item} onClose={onCloseModal} center>

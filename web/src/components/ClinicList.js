@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Modal from 'react-responsive-modal';
 import '../component-styles/ClinicListContainer.css';
 import ClinicListItem from './ClinicListItem.js';
 import ClinicModal from './ClinicModal';
