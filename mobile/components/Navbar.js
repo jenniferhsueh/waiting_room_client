@@ -10,7 +10,6 @@ export default class Navbar extends Component {
           leftComponent={{ icon: "home", color: "#fff" }}
           centerComponent={{ text: "FLUFFY BUNNIES", style: { color: "#fff" } }}
           rightComponent={{ icon: 'menu', color: '#fff', onPress: () => this.props.toggleMenu() }}
-          // {<Button Title="menu" > </Button>}
         />
         />
       </View>
