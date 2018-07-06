@@ -37,7 +37,11 @@ class LoginModal extends Component {
     return (
       <div className="login-modal">
         <div className="item" onClick={ this.onOpenModal }>Login</div>
-         <Modal className="login" open={open} onClose={ this.onCloseModal } center>
+         <Modal
+          className="login"
+          open={open}
+          onClose={ this.onCloseModal }
+          center>
           <form onSubmit={this.handleSubmit}>
           <h1>Login</h1>
           <FormGroup className="form-email" controlId="email" bsSize="large">

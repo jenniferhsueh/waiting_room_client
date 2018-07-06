@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../component-styles/ClinicListContainer.css';
+import '../component-styles/ClinicList.css';
 import ClinicListItem from './ClinicListItem.js';
 import ClinicModal from './ClinicModal';
 
@@ -24,15 +24,15 @@ class ClinicList extends Component {
     }).then(data => {
       const clinics = []
       data.businesses.map(clinic => {
-        let clinic_deets = {
+        let clinicDetails = {
           name: clinic.name,
           location: clinic.location,
           coordinates: clinic.coordinates,
-          wait_time: (Math.floor(Math.random()* 60))
+          wait_time: (Math.floor(Math.random() * 60))
         }
-        clinics.push(clinic_deets)
+        clinics.push(clinicDetails)
       })
-
+      {console.log('this.props.waitTime from clinicList.js====>',this.props.waitTime())}
       this.setState({ clinics })
     })
   }
@@ -42,6 +42,7 @@ class ClinicList extends Component {
       <div className="list-container">
         {this.state.clinics.map(clinic => <ClinicListItem key={clinic.id} openModal={() => this.onListItemClick(clinic)} item={clinic}/>)}
         {this.state.modalClinic && <ClinicModal item={this.state.modalClinic} onCloseModal={this.onCloseModal}  />}
+
       </div>
     )
   }

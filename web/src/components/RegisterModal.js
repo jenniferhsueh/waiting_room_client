@@ -40,7 +40,10 @@ class RegisterModal extends Component {
     return (
       <div className="register-modal">
         <div className="item" onClick={ this.onOpenModal }>Register</div>
-         <Modal className="register" open={open} onClose={ this.onCloseModal } center>
+         <Modal
+          className="register"
+          open={open} onClose={ this.onCloseModal }
+          center>
           <form onSubmit={this.handleSubmit}>
           <h1>Register</h1>
             <div className="reg-wrapper">

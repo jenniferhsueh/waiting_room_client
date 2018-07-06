@@ -12,9 +12,13 @@
     "react-dom": "^16.4.1",
     "react-leaflet": "^2.0.0-rc.3",
     "react-map-gl": "^3.3.0",
+    "react-number-picker": "^1.0.5",
     "react-responsive-modal": "^3.0.3",
     "react-router": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "react-widgets": "^4.3.2",
+    "react-widgets-globalize": "^5.0.8",
+    "semantic-ui-react-numberpicker": "0.0.1-b"
   },
   "scripts": {
     "start": "react-scripts start",

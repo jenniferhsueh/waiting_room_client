@@ -34,7 +34,8 @@
 
 .nav-right {
   display: flex;
-  margin-left: 40%;
+  padding-right: 25px;
+  margin-left: auto;
   margin-top: 2.9%;
 }
 

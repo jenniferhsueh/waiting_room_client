@@ -35,13 +35,13 @@ class MapView extends Component {
     }).then(data => {
       const clinics = []
       data.businesses.map(clinic => {
-        let clinic_deets = {
+        let clinicDetails = {
           name: clinic.name,
           location: clinic.location,
           coordinates: clinic.coordinates,
           wait_time: (Math.floor(Math.random()* 60))
         }
-        clinics.push(clinic_deets)
+        clinics.push(clinicDetails)
       })
 
       this.setState({ clinics })
