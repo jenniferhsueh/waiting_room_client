@@ -6,6 +6,7 @@ import YelpService from "./yelp"
 import Navbar from "./components/Navbar"
 import NavButtons from "./components/NavButtons"
 import ListEntry from "./components/ListEntry"
+import Navmenu from "./components/Navmenu"
 
 const region = {
   latitude: 49.246292,
@@ -23,6 +24,7 @@ export default class App extends React.Component {
   state = {
     region: null,
     mapView: true,
+    menuView: false,
     clinics: [],
     modalVisible: false
   }
@@ -70,6 +72,7 @@ export default class App extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <Navbar />
+        <Navmenu />
         <NavButtons toggleView={this.toggleView}/>
         { mapView ? <Map region={region} places={clinics} /> : <ListEntry places={clinics} />  }
       </SafeAreaView>
