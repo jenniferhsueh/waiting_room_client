@@ -1,4 +1,4 @@
-import { AppRegistry, View } from "react-native"
+import { AppRegistry } from "react-native"
 
 // Import the App container component
 import App from "./App"

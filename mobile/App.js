@@ -1,9 +1,11 @@
 import React from "react"
-import { StyleSheet, Text, View, SafeAreaView, } from "react-native"
-import Map from "./Map"
-import { Location, Permissions, MapView } from "expo"
+import { StyleSheet, SafeAreaView } from "react-native"
+import Map from "./components/Map"
+import { Location, Permissions } from "expo"
 import YelpService from "./yelp"
-
+import Navbar from "./components/Navbar"
+import NavButtons from "./components/NavButtons"
+import ListEntry from "./components/ListEntry"
 
 const region = {
   latitude: 49.246292,
@@ -20,25 +22,31 @@ const deltas = {
 export default class App extends React.Component {
   state = {
     region: null,
-    coffeeShops: []
+    mapView: true,
+    clinics: [],
+    modalVisible: false
   }
 
   componentWillMount() {
     this.getLocationAsync();
   }
 
+  toggleView = () => {
+    this.setState(previousState => {
+      return { mapView: !previousState.mapView }
+    })
+  }
+
   getClinics = async () => {
     const { latitude, longitude } = this.state.region;
     const userLocation = { latitude, longitude };
-    const coffeeShops = await YelpService.getClinics(userLocation);
-    this.setState({ coffeeShops });
+    const clinics = await YelpService.getClinics(userLocation);
+    this.setState({ clinics });
   };
 
   getLocationAsync = async () => {
-    // Code Below asks to get user location and then
-    // sets the region to the latitude and 
 
-    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    let {status} = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== 'granted') {
       this.setState({
         errorMessage: 'Permission to access location was denied'
@@ -51,17 +59,19 @@ export default class App extends React.Component {
       longitude: location.coords.longitude,
       ...deltas
     };
-    await this.setState({ region });
+    await this.setState({region});
     await this.getClinics();
   }
 
   render() {
-    const { region, coffeeShops } = this.state;
+    const { region, clinics, mapView } = this.state;
 /*show a preloader*/
     
     return (
       <SafeAreaView style={styles.container}>
-        <Map region={region} places={coffeeShops} />
+        <Navbar />
+        <NavButtons toggleView={this.toggleView}/>
+        { mapView ? <Map region={region} places={clinics} /> : <ListEntry places={clinics} />  }
       </SafeAreaView>
     );
   }
