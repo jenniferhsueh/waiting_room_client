@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { StyleSheet, View, ScrollView } from "react-native"
+import { StyleSheet, Text, View, ScrollView, Linking } from "react-native"
 import { ListItem } from "react-native-elements"
 
 export default class ListEntry extends Component {
@@ -13,7 +13,15 @@ export default class ListEntry extends Component {
             <ListItem
               key={i}
               title={place.name}
-              subtitle={place.phone}
+              subtitle={
+                <View>
+                  <Text onPress={() => Linking.openURL(place.website)}>See Reviews</Text>
+                  <Text>Wait Time: {place.wait_time}</Text>
+                  <Text>{place.phone}</Text>
+                </View>
+              }
+              containerStyle={{height: 100}}
+              subtitleContainerStyle={{height: 60, paddingLeft: 10 }}
             />
           ))
         }
