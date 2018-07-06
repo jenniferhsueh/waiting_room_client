@@ -27,6 +27,12 @@ class MyClinic extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
+  onKeyPress = (e) => {
+    if(e.key === 'Enter') {
+      this.onButtonClick(this.state.minutes)
+    }
+  }
+
   render() {
     const { open } = this.state;
     return (
@@ -40,17 +46,20 @@ class MyClinic extends Component {
           center>
         <h1>Set Wait Time for {  }</h1>
           <input className="number-selector"
+            autoFocus={true}
             type="number"
             name="minutes"
             placeholder="mins"
             min="0"
             max="360"
             step="5"
+            onKeyPress={ this.onKeyPress }
             onChange={e => this.handleChange(e)}>
           </input>
           <button className="update-button"
             type="submit"
             onClick={() => this.onButtonClick(this.state.minutes) }>
+
             Update
           </button>
         </Modal>
