@@ -6,7 +6,7 @@ class MyClinic extends Component {
 
   state = {
     open: false,
-    minutes: ''
+    minutes: '',
   }
 
   onOpenModal = () => {

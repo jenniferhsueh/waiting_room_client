@@ -6,7 +6,7 @@ class MapBox extends Component {
   render() {
     return (
       <div className="map-container">
-        <MapView />
+        <MapView clinics={this.props.clinics}/>
       </div>
     )
   }

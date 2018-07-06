@@ -9,7 +9,7 @@ class MapView extends Component {
 
   state = {
     open: false,
-    clinics: [],
+    clinics: this.props.clinics,
     wait: "",
     viewport: {
       width: 986.5,

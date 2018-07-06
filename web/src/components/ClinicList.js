@@ -25,6 +25,7 @@ class ClinicList extends Component {
       const clinics = []
       data.businesses.map(clinic => {
         let clinicDetails = {
+          id: clinic.id,
           name: clinic.name,
           location: clinic.location,
           coordinates: clinic.coordinates,
@@ -32,7 +33,6 @@ class ClinicList extends Component {
         }
         clinics.push(clinicDetails)
       })
-      {console.log('this.props.waitTime from clinicList.js====>',this.props.waitTime())}
       this.setState({ clinics })
     })
   }
@@ -40,8 +40,14 @@ class ClinicList extends Component {
   render() {
     return (
       <div className="list-container">
-        {this.state.clinics.map(clinic => <ClinicListItem key={clinic.id} openModal={() => this.onListItemClick(clinic)} item={clinic}/>)}
-        {this.state.modalClinic && <ClinicModal item={this.state.modalClinic} onCloseModal={this.onCloseModal}  />}
+        {this.props.clinicList.map(clinic => <ClinicListItem
+          key={clinic.id}
+          openModal={() => this.onListItemClick(clinic)}
+          item={clinic}/>)}
+
+        {this.state.modalClinic && <ClinicModal
+          item={this.state.modalClinic}
+          onCloseModal={this.onCloseModal} />}
 
       </div>
     )
