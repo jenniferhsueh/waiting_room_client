@@ -33,12 +33,21 @@ class MapView extends Component {
     .then(results => {
       return results.json();
     }).then(data => {
-      this.setState({
-        clinics: data.businesses
+      const clinics = []
+      data.businesses.map(clinic => {
+        let clinic_deets = {
+          name: clinic.name,
+          location: clinic.location,
+          coordinates: clinic.coordinates,
+          wait_time: (Math.floor(Math.random()* 60))
+        }
+        clinics.push(clinic_deets)
       })
-      console.log(data.businesses)
+
+      this.setState({ clinics })
     })
   }
+
 
   render() {
     return (
@@ -51,12 +60,12 @@ class MapView extends Component {
           {this.state.clinics.map(clinic => {
             return (
               <Marker key={clinic.id} latitude={clinic.coordinates.latitude} longitude={clinic.coordinates.longitude} offsetLeft={-20} offsetTop={-10} openModal={() => this.onListItemClick(clinic)} item={clinic} >
-              {this.state.modalClinic && <ClinicModal item={this.state.modalClinic} onCloseModal={this.onCloseModal}/>}
-              <div onClick={() => this.props.openModal} ><span style={{fontSize:46}} role="img">✜</span></div>
+
+              <div onClick={() => this.onListItemClick(clinic)} ><span style={{fontSize:46}} role="img">⚰️</span></div>
               </Marker>);
           })}
-
         </ReactMapGL>
+        {this.state.modalClinic && <ClinicModal item={this.state.modalClinic} onCloseModal={this.onCloseModal}/>}
       </div>
     )
   }
