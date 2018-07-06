@@ -8,10 +8,9 @@ class ClinicListItem extends Component {
       <div className="list-item" onClick={this.props.openModal}>
         <div className="name-placeholder">
           {this.props.item.name}
-          {console.log("CLINIC NAME", this.props.item.name)}
         </div>
         <div className="wait-placeholder">
-          {/*{this.props.item.wait}*/}
+          {this.props.item.wait_time} Mins
         </div>
         <div className="info-placeholder">
           {this.props.item.location.address1}

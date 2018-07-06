@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
+import ClinicModal from './ClinicModal';
 import '../component-styles/MapView.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -7,7 +8,9 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 class MapView extends Component {
 
   state = {
-
+    open: false,
+    clinics: [],
+    wait: "",
     viewport: {
       width: 986.5,
       height: 735,
@@ -17,94 +20,47 @@ class MapView extends Component {
     }
   };
 
+  onCloseModal = () => {
+    this.setState({ modalClinic:undefined });
+  };
+
+  onListItemClick = (modalClinic) => {
+    this.setState({modalClinic})
+  };
+
   componentDidMount() {
     fetch('/businesses')
     .then(results => {
       return results.json();
     }).then(data => {
-      this.setState(previousState => {
+      this.setState({
+        clinics: data.businesses
       })
-      return this.state.clinics
+      console.log(data.businesses)
     })
   }
 
   render() {
-    console.log(this);
     return (
       <div className="map">
         <ReactMapGL mapStyle="mapbox://styles/robschwitzer/cjj80knux2vho2sn0aufww2dc/"
-mapboxApiAccessToken={'pk.eyJ1Ijoicm9ic2Nod2l0emVyIiwiYSI6ImNqajd4bTl5YzJxZnQzdmxmejhxcDdsMWsifQ.eQJ-_AlQVTM0D9Pfl2mALA'}
-        {...this.state.viewport}
-        onViewportChange={(viewport) => this.setState({viewport})}
-      >
-          <Marker latitude={49.2823760} longitude={-123.1090515} offsetLeft={-20} offsetTop={-10}>
-            <span role="img">💰</span>
-          </Marker>
+          mapboxApiAccessToken={'pk.eyJ1Ijoicm9ic2Nod2l0emVyIiwiYSI6ImNqajd4bTl5YzJxZnQzdmxmejhxcDdsMWsifQ.eQJ-_AlQVTM0D9Pfl2mALA'}
+          {...this.state.viewport}
+          onViewportChange={(viewport) => this.setState({viewport})}>
+
+          {this.state.clinics.map(clinic => {
+            return (
+              <Marker key={clinic.id} latitude={clinic.coordinates.latitude} longitude={clinic.coordinates.longitude} offsetLeft={-20} offsetTop={-10} openModal={() => this.onListItemClick(clinic)} item={clinic} >
+              {this.state.modalClinic && <ClinicModal item={this.state.modalClinic} onCloseModal={this.onCloseModal}/>}
+              <div onClick={() => this.props.openModal} ><span style={{fontSize:46}} role="img">✜</span></div>
+              </Marker>);
+          })}
+
         </ReactMapGL>
       </div>
     )
   }
 }
-
+//
 
 export default MapView;
-
-// import React, { Component } from 'react';
-// import GoogleMapReact from 'google-map-react'
-// import '../component-styles/MapView.css';
-
-//   const AnyReactComponent = ({ text }) => <div>{text}</div>
-
-
-// class MapView extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       clinics: []
-//     }
-//   }
-
-
-//   static defaultProps = {
-//     center: {
-//       lat: 59.95,
-//       lng: 30.33
-//     },
-//     zoom: 11
-//   };
-
-//   componentDidMount() {
-//     fetch('/businesses')
-//     .then(results => {
-//       return results.json();
-//     }).then(data => {
-//       this.setState(previousState => {
-//         console.log("previouse State ===>", data.businesses)
-//         { clinics: previousState.clinics }
-//       })
-//       return this.state.clinics
-//     })
-//   }
-
-//   render() {
-//     console.log("Our clinics ===>", this.state.clinics)
-//     return (
-//       <div>
-//       <GoogleMapReact
-
-//           defaultCenter={this.props.center}
-//           defaultZoom={this.props.zoom}
-//         >
-//           <AnyReactComponent
-//             lat={59.955413}
-//             lng={30.337844}
-//             text={'Kreyser Avrora'}
-//           />
-//         </GoogleMapReact>
-//       </div>
-//     )
-//   }
-// }
-
-
-// export default MapView;
