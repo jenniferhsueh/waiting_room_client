@@ -20,7 +20,7 @@ const getClinics = userLocation => {
     })
     .then(res =>
       res.data.businesses.map(business => {
-        console.log("===============>",business)
+        // console.log("===============>",business)
         return {
           id: business.id,
           name: business.name,

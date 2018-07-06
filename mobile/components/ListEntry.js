@@ -11,15 +11,22 @@ export default class ListEntry extends Component {
         {
           this.props.places.map((place, i) => (
             <ListItem
+              hideChevron={true}
               key={i}
               title={place.name}
               subtitle={
                 <View>
-                  <Text onPress={() => Linking.openURL(place.website)}>See Reviews</Text>
-                  <Text>Wait Time: {place.wait_time}</Text>
                   <Text>{place.phone}</Text>
+                  <Text onPress={() => Linking.openURL(place.website)} style={{color: "blue"}} >See Reviews</Text>
                 </View>
               }
+              rightTitle={
+                <View>
+                  <Text>Wait Time </Text>
+                  <Text>{place.wait_time} Minutes</Text>
+                </View>
+              }
+              
               containerStyle={{height: 100}}
               subtitleContainerStyle={{height: 60, paddingLeft: 10 }}
             />
