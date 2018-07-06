@@ -39,6 +39,12 @@ export default class App extends React.Component {
     })
   }
 
+  toggleMenu = () => {
+    this.setState(previousState => {
+      return { menuView: !previousState.menuView }
+    })
+  }
+
   getClinics = async () => {
     const { latitude, longitude } = this.state.region;
     const userLocation = { latitude, longitude };
@@ -66,13 +72,12 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { region, clinics, mapView } = this.state;
-/*show a preloader*/
-    
+    const { region, clinics, mapView, menuView } = this.state;
+
     return (
       <SafeAreaView style={styles.container}>
-        <Navbar />
-        <Navmenu />
+        <Navbar toggleMenu={this.toggleMenu}/>
+        { menuView ? <Navmenu/> : ""}
         <NavButtons toggleView={this.toggleView}/>
         { mapView ? <Map region={region} places={clinics} /> : <ListEntry places={clinics} />  }
       </SafeAreaView>

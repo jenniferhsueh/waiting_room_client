@@ -1,15 +1,17 @@
 import React, { Component } from "react"
-import { StyleSheet, View } from "react-native"
-import { Header } from "react-native-elements"
+import { StyleSheet, View, Text } from "react-native"
+import { Header, Button, } from "react-native-elements"
 
 export default class Navbar extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Header
-          leftComponent={{ icon: 'home', color: '#fff' }}
-          centerComponent={{ text: 'FLUFFY BUNNIES', style: { color: '#fff' } }}
-          rightComponent={{ icon: 'menu', color: '#fff' }}
+          leftComponent={{ icon: "home", color: "#fff" }}
+          centerComponent={{ text: "FLUFFY BUNNIES", style: { color: "#fff" } }}
+          rightComponent={{ icon: 'menu', color: '#fff', onPress: () => this.props.toggleMenu() }}
+          // {<Button Title="menu" > </Button>}
+        />
         />
       </View>
     );
