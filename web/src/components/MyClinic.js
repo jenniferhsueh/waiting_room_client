@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {geolocated} from 'react-geolocated';
 import Modal from 'react-responsive-modal';
 import '../component-styles/MyClinic.css'
 

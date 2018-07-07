@@ -1,9 +1,19 @@
-/*body {
-background-color: #4d899c;
-opacity: 0.7;
-height:100%;
+html, body {
+    height: 100%;
+    margin: 0;
 }
-*/
+
+.loading-background {
+  min-height: 100%;
+  background-color: #ECE4D1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  position: fixed;
+}
+
 .loading {
   display: flex;
   justify-content: center;
@@ -15,7 +25,13 @@ height:100%;
   margin-top: 15%;
   width:20%;
   animation: App-logo-spin infinite 4000ms linear;
-  opacity: 0.5;
+}
+
+.loading-graphic svg {
+  color: black;
+  opacity: 0.7;
+  height: 100%;
+  margin: 0;
 }
 
 @keyframes App-logo-spin {
@@ -24,11 +40,12 @@ height:100%;
 }
 
 .loading-text {
+  color: #65B4CF;
   font-size: 60px;
   font-family: 'Cookie', cursive;
-  opacity: 0.8;
   display: flex;
   justify-content: center;
   transform: rotate(-1deg);
+  text-shadow: 8px 5px 8px #fd8904;
 }
 

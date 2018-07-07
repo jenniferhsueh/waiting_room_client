@@ -12,7 +12,11 @@ class App extends Component {
   state = {
     loading: true,
     currentUser: {
-      id: "7HrLNyrswDEFppuwn67aUg"
+      id: "7HrLNyrswDEFppuwn67aUg",
+      location: {
+        latitude: 0,
+        longitude: 0
+      }
     },
     clinics: [],
   };
@@ -26,8 +30,6 @@ class App extends Component {
     })
   }
 
-  loadScreen = () => {
-  }
 
   componentDidMount() {
 
@@ -50,24 +52,32 @@ class App extends Component {
     })
     setTimeout(() => this.setState({
       loading: false
-    }),1300);
+    }),1200);
   }
 
   render() {
-    const { loading } = this.state
-    const { currentWaitTime } = this.state
+    const { loading, currentWaitTime } = this.state
+
+    setTimeout(() =>
+      navigator.geolocation.getCurrentPosition((position) => {
+        const location = {...this.state.currentUser}
+        location.location.latitude = position.coords.latitude
+        location.location.longitude = position.coords.longitude
+        this.setState({location})
+    }),2200)
+
     if(loading){
      return (<LoadScreen />)
     } else {
       return (
       <div className="main-container">
         <Nav waitTime={this.getWaitTime}/>
-      <FadeIn transitionDuration={2000}>
-        <div className="body-container">
-          <ClinicList clinicList={this.state.clinics}/>
-          <MapBox clinics={this.state.clinics}/>
-        </div>
-      </FadeIn>
+        <FadeIn transitionDuration={2000}>
+          <div className="body-container">
+            <ClinicList clinicList={this.state.clinics}/>
+            <MapBox clinics={this.state.clinics}/>
+          </div>
+        </FadeIn>
       </div>
     )
     }

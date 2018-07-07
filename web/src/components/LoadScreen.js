@@ -10,14 +10,14 @@ class Loading extends Component {
   render() {
 
     return (
-      <FadeIn>
-      <div>
-        <div className="loading">
-          <img width="20" src={logo} alt="clock-logo"/>
-        </div>
-        <h1 className="loading-text">Loading...</h1>
+      <div className="loading-background">
+        <FadeIn>
+          <div className="loading">
+            <img className="loading-graphic" width="20" src={logo} alt="clock-logo"/>
+          </div>
+          <h1 className="loading-text">Loading...</h1>
+        </FadeIn>
       </div>
-      </FadeIn>
     )
   }
 }
