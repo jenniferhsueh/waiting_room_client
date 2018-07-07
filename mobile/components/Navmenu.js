@@ -1,15 +1,21 @@
 import React, { Component } from "react"
 import { StyleSheet, View, Text, Image, Modal, TouchableHighlight } from "react-native"
-import { Card,  ListItem } from "react-native-elements"
+import { Card, ListItem, FormLabel, FormInput, FormValidationMessage } from "react-native-elements"
 
 export default class Navmenu extends Component {
 
   state = {
     modalVisible: false,
+    waitTime: ""    
   };
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
+  }
+
+  handleChange = (waitTime) => {
+    this.setState({ waitTime })
+    console.log(this.state.waitTime)
   }
 
   render() {
@@ -17,26 +23,31 @@ export default class Navmenu extends Component {
       <Card containerStyle={styles.container}>
         <View >
 
-          <Modal
-          animationType="fade"
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {
-            alert('Modal has been closed.');
-          }}>
-          <View style={{marginTop: 22}}>
-            <View>
-              <Text>Hello World!</Text>
+          <Modal 
+            animationType="fade"
+            transparent={false}
+            visible={this.state.modalVisible}
+          >
+            <View style={{marginTop: 22}}>
+              <View>
+                <FormLabel>Set Wait time for </FormLabel>
+                <FormInput 
+                  keyboardType="numeric" 
+                  autofocus={true}
+                  name="waitTime" 
+                  onChangeText={ waitTime => this.handleChange(waitTime)}
+                />
+                <Text>{this.state.waitTime}</Text>
+                <TouchableHighlight
+                  onPress={() => {
+                    this.setModalVisible(!this.state.modalVisible);
+                  }}>
+                  <Text>Update Time</Text>
+                </TouchableHighlight>
 
-              <TouchableHighlight
-                onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
-                }}>
-                <Text>Hide Modal</Text>
-              </TouchableHighlight>
+              </View>
             </View>
-          </View>
-        </Modal>
+          </Modal>
           
           <ListItem onPress={() => {this.setModalVisible(!this.state.modalVisible) }} 
             key="1" title="My Clinic" titleStyle={styles.text} 
