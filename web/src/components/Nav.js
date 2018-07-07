@@ -12,7 +12,6 @@ class Nav extends Component {
 
   currentWaitTime = (waitTime) => {
     this.props.waitTime(waitTime)
-    // console.log('data from Nav.js =====>', data)
   }
 
   render() {

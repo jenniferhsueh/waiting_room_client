@@ -60,7 +60,6 @@ class MyClinic extends Component {
           <button className="update-button"
             type="submit"
             onClick={() => this.onButtonClick(this.state.minutes) }>
-
             Update
           </button>
         </Modal>

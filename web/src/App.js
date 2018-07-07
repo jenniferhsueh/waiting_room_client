@@ -30,7 +30,6 @@ class App extends Component {
     })
   }
 
-
   componentDidMount() {
 
     fetch('/businesses')
@@ -64,7 +63,7 @@ class App extends Component {
         location.location.latitude = position.coords.latitude
         location.location.longitude = position.coords.longitude
         this.setState({location})
-    }),2200)
+    }),2000)
 
     if(loading){
      return (<LoadScreen />)
