@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FadeIn from 'react-fade-in';
 import './App.css';
 import LoadScreen from './components/LoadScreen.js';
 import Nav from './components/Nav.js';
@@ -49,23 +50,24 @@ class App extends Component {
     })
     setTimeout(() => this.setState({
       loading: false
-    }),1800);
+    }),1300);
   }
 
   render() {
     const { loading } = this.state
     const { currentWaitTime } = this.state
-    console.log("Loading is =====>", loading)
     if(loading){
      return (<LoadScreen />)
     } else {
       return (
       <div className="main-container">
         <Nav waitTime={this.getWaitTime}/>
+      <FadeIn transitionDuration={2000}>
         <div className="body-container">
           <ClinicList clinicList={this.state.clinics}/>
           <MapBox clinics={this.state.clinics}/>
         </div>
+      </FadeIn>
       </div>
     )
     }
