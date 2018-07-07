@@ -13,7 +13,7 @@ export default class ListEntry extends Component {
             <ListItem
               hideChevron={true}
               key={i}
-              title={place.name}
+            title={place.name}
               subtitle={
                 <View>
                   <Text>{place.phone}</Text>
@@ -21,11 +21,10 @@ export default class ListEntry extends Component {
                 </View>
               }
               rightTitle={
-                <View>
-                  <Text>Wait Time </Text>
-                  <Text>{place.wait_time} Minutes</Text>
-                </View>
+                `Wait Time:\n${place.wait_time} MINS`              
               }
+              rightTitleStyle={{color: "black", fontSize: 20}}
+              rightTitleNumberOfLines={ 2 }
               
               containerStyle={{height: 100}}
               subtitleContainerStyle={{height: 60, paddingLeft: 10 }}
