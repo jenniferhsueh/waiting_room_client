@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import LoadScreen from './components/LoadScreen.js';
 import Nav from './components/Nav.js';
 import ClinicList from './components/ClinicList.js';
 import MapBox from './components/MapBox.js';
@@ -8,6 +9,7 @@ import MapBox from './components/MapBox.js';
 class App extends Component {
 
   state = {
+    loading: true,
     currentUser: {
       id: "7HrLNyrswDEFppuwn67aUg"
     },
@@ -23,8 +25,11 @@ class App extends Component {
     })
   }
 
+  loadScreen = () => {
+  }
 
   componentDidMount() {
+
     fetch('/businesses')
     .then(results => {
       return results.json();
@@ -42,12 +47,20 @@ class App extends Component {
       })
       this.setState({ clinics })
     })
+    setTimeout(() => this.setState({
+      loading: false
+    }),1800);
   }
 
   render() {
+    const { loading } = this.state
     const { currentWaitTime } = this.state
-    return (
-     <div className="main-container">
+    console.log("Loading is =====>", loading)
+    if(loading){
+     return (<LoadScreen />)
+    } else {
+      return (
+      <div className="main-container">
         <Nav waitTime={this.getWaitTime}/>
         <div className="body-container">
           <ClinicList clinicList={this.state.clinics}/>
@@ -55,6 +68,8 @@ class App extends Component {
         </div>
       </div>
     )
+    }
+
   }
 }
 

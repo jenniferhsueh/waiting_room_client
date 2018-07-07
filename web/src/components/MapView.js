@@ -28,27 +28,6 @@ class MapView extends Component {
     this.setState({modalClinic})
   };
 
-  componentDidMount() {
-    fetch('/businesses')
-    .then(results => {
-      return results.json();
-    }).then(data => {
-      const clinics = []
-      data.businesses.map(clinic => {
-        let clinicDetails = {
-          name: clinic.name,
-          location: clinic.location,
-          coordinates: clinic.coordinates,
-          wait_time: (Math.floor(Math.random()* 60))
-        }
-        clinics.push(clinicDetails)
-      })
-
-      this.setState({ clinics })
-    })
-  }
-
-
   render() {
     return (
       <div className="map">
