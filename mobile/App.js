@@ -6,6 +6,7 @@ import YelpService from "./yelp"
 import Navbar from "./components/Navbar"
 import NavButtons from "./components/NavButtons"
 import ListEntry from "./components/ListEntry"
+import Navmenu from "./components/Navmenu"
 
 const region = {
   latitude: 49.246292,
@@ -23,8 +24,23 @@ export default class App extends React.Component {
   state = {
     region: null,
     mapView: true,
+    menuView: false,
     clinics: [],
-    modalVisible: false
+    modalVisible: false,
+    currentUser: {
+      clinic_id: "7HrLNyrswDEFppuwn67aUg",
+      clinic_name: "Aquarius Medical Clinic"
+    },
+  }
+
+  getWaitTime = (waitTime) => {
+    
+    this.state.clinics.map((clinic, index) => {
+      if (clinic.id === this.state.currentUser.clinic_id) {
+        this.state.clinics[index].wait_time = parseInt(waitTime);
+        this.forceUpdate()
+      }
+    })
   }
 
   componentWillMount() {
@@ -34,6 +50,12 @@ export default class App extends React.Component {
   toggleView = () => {
     this.setState(previousState => {
       return { mapView: !previousState.mapView }
+    })
+  }
+
+  toggleMenu = () => {
+    this.setState(previousState => {
+      return { menuView: !previousState.menuView }
     })
   }
 
@@ -64,12 +86,12 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { region, clinics, mapView } = this.state;
-/*show a preloader*/
-    
+    const { region, clinics, mapView, menuView } = this.state;
+
     return (
       <SafeAreaView style={styles.container}>
-        <Navbar />
+        <Navbar toggleMenu={this.toggleMenu}/>
+        { menuView ? <Navmenu toggleMenu={this.toggleMenu} clinics={clinics} waitMinutes={this.getWaitTime} currentUser={this.state.currentUser}/> : ""}
         <NavButtons toggleView={this.toggleView}/>
         { mapView ? <Map region={region} places={clinics} /> : <ListEntry places={clinics} />  }
       </SafeAreaView>
