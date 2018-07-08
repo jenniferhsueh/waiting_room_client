@@ -1,0 +1,51 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.loading-background {
+  min-height: 100%;
+  background-color: #ECE4D1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  position: fixed;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.loading img {
+  margin-top: 15%;
+  width:20%;
+  animation: App-logo-spin infinite 4000ms linear;
+}
+
+.loading-graphic svg {
+  color: black;
+  opacity: 0.7;
+  height: 100%;
+  margin: 0;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: #65B4CF;
+  font-size: 60px;
+  font-family: 'Cookie', cursive;
+  display: flex;
+  justify-content: center;
+  transform: rotate(-1deg);
+  text-shadow: 8px 5px 8px #fd8904;
+}
+

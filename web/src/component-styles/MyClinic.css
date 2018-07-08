@@ -1,0 +1,26 @@
+.number-selector {
+  display: flex;
+  justify-content: right;
+  font-size: 28px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  height: 50px;
+  width: 50%;
+  border-radius: 5px;
+  margin: auto;
+}
+
+.number-selector:hover {
+}
+
+.update-button {
+  background-color: tomato;
+  height:40px;
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.update-button:hover {
+
+}

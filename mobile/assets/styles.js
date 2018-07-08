@@ -1,35 +1,36 @@
 import { StyleSheet } from 'react-native';
+
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'pink',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "100%",
+    padding: 0,
+    margin: 0,
+    backgroundColor: "#476DC5"
   },
-  red: {
-    color: 'red',
-    fontSize: 30,
-    fontWeight: 'bold'
+  text: {
+    color: "white"
   },
-  big: {
-    fontSize: 30
+  subtitle: {
+    color: "lightgrey"
   },
-  container1: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 10
+  formText: {
+    color: "black"
   },
   button: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
-    paddingHorizontal: 10
+    width: "60%",
+    alignSelf: "center",
+    marginTop: 10
   },
-  countContainer: {
-    alignItems: 'center',
-    padding: 10
+  input: {
+    height: 50,
+    borderBottomWidth: 2,
+    borderBottomColor: "#2196F3",
+    margin: 10
   },
-  countText: {
-    color: '#FF00FF'
+  regContainer: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
   }
-});
+})
