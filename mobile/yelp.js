@@ -13,17 +13,23 @@ const getClinics = userLocation => {
   return api
     .get('/businesses/search', {
       params: {
-        limit: 10,
+        limit: 3,
         categories: 'walkinclinics',
         ...userLocation,
       },
     })
     .then(res =>
       res.data.businesses.map(business => {
-        console.log("===============>",business.name)
+        // console.log("===============>",business)
         return {
+          id: business.id,
           name: business.name,
+          location: business.location,
           coords: business.coordinates,
+          phone: business.display_phone,
+          website: business.url,
+          wait_time: (Math.floor(Math.random() * 60))
+
         }
       })
     )

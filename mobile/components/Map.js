@@ -7,7 +7,7 @@ const Marker = MapView.Marker
 export default class Map extends Component {
   renderMarkers() {
     return this.props.places.map((place, i) => (
-      <Marker key={i} title={place.name} coordinate={place.coords} />
+      <Marker key={i} title={`${place.wait_time} Mins - ${place.name} `} coordinate={place.coords} />
     ))
   }
   
