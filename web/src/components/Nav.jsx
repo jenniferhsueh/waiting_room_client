@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Router, Route, Switch } from 'react-router';
 import logo from '../assets/clock-logo.svg';
 import RegisterModal from '../components/RegisterModal'
 import LoginModal from '../components/LoginModal'
@@ -26,7 +27,7 @@ class Nav extends Component {
             <div className="item">For Patients</div>
             <div className="item">For Clinics</div>
             <RegisterModal open={ open }/>
-            <LoginModal open={ open }/>
+            <LoginModal />
           </div>
         </div>
       </div>

@@ -1,15 +1,32 @@
-var express = require('express');
-var router = express.Router();
+"use strict";
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.json([{
-  	id: 1,
-  	username: "samsepi0l"
-  }, {
-  	id: 2,
-  	username: "D0loresH4ze"
-  }]);
-});
+const express = require('express');
+const router = express.Router();
 
-module.exports = router;
+module.exports = (knex) => {
+
+ router.get("/", (req, res, next) => {
+   knex.select('*').from('users')
+     .then((results) => {
+       res.json(results)
+     })
+     .catch((e) => {
+       res.status(500).send(e);
+     })
+
+ });
+
+ router.get("/:id", (req, res, next) => {
+   knex.select('*').from('users')
+     .where('id', '=', req.params.id)
+     .then((results) => {
+       res.json(results)
+     })
+     .catch((e) => {
+       res.status(500).send(e);
+     })
+
+ });
+
+ return router
+}

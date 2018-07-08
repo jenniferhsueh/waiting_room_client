@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Router, Route, Switch } from 'react-router';
 import FadeIn from 'react-fade-in';
 import './App.css';
-import LoadScreen from './components/LoadScreen.js';
-import Nav from './components/Nav.js';
-import ClinicList from './components/ClinicList.js';
-import MapBox from './components/MapBox.js';
+import LoadScreen from './components/LoadScreen';
+import Nav from './components/Nav';
+import ClinicList from './components/ClinicList';
+import MapBox from './components/MapBox';
 
 
 class App extends Component {
