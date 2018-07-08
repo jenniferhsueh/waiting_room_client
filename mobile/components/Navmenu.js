@@ -1,12 +1,15 @@
 import React, { Component } from "react"
 import { StyleSheet, View, TextInput, Image, Modal, TouchableHighlight } from "react-native"
 import { Button, Card, ListItem, FormLabel, FormInput, FormValidationMessage } from "react-native-elements"
+import SetWaitTime from "./SetWaitTime"
+import Register from "./Register"
 
 export default class Navmenu extends Component {
 
   state = {
     modalVisible: false,
     regVisible: false,
+    modalView: "",
     waitTime: ""    
   };
 
@@ -14,12 +17,12 @@ export default class Navmenu extends Component {
     this.props.waitMinutes(waitTime)
   }
 
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+  setModalVisible = (modalVisible) => {
+    this.setState({modalVisible});
   }
 
-  setRegVisible(visible){
-    this.setState({regVisible: visible});
+  setModalView = (modalView) => {
+    this.setState({modalView});
   }
 
   // handleSubmit = () => {
@@ -35,7 +38,20 @@ export default class Navmenu extends Component {
   }
 
   render() {
-    const { regVisible } = this.state
+    const { regVisible, modalView } = this.state
+    let currentModalView;
+    switch(modalView) {
+      case "WaitTime":
+      // currentModalView =
+        break;
+      case "Register":
+        break;
+      case "Register":
+        break;
+      default:
+       break;
+
+    }
     return (
       <Card containerStyle={styles.container}>
         <View >
@@ -47,71 +63,16 @@ export default class Navmenu extends Component {
           >
             <View style={{marginTop: 22, backgroundColor: "pink", padding: 10}}>
               <View>
-              {regVisible ? 
-              <View Style={styles.regContainer}
-                visible={this.state.regVisible}
-              >
-                <FormInput 
-                  textAlign="left"
-                  placeholder="Name"
-                  autoFocus={true}
-                  name="name" 
-                  returnKeyType="next"
-                  selectionColor="black"
-                />
-                <FormInput
-                  style={styles.input}
-                  keyboardType="email-address"
-                  placeholder="email"
-                  returnKeyType="next"
-                />
-                <FormInput
-                  style={styles.input}
-                  placeholder="Password"
-                  secureTextEntry={true}
-                  returnKeyType="next"
-                />
-                <FormInput
-                  style={styles.input}
-                  placeholder="Confirm Password"
-                  secureTextEntry={true}
-                  returnKeyType="done"
-                />
-                <Button 
-                  buttonStyle={styles.button}
-                  raised
-                  title='Register'
-                  onPress={() => {
-                    this.onFormChangeTime()
-                    this.setModalVisible(!this.state.modalVisible);
-                    this.props.toggleMenu()
-                  }}>
-                </Button>
-              </View> :
-              <View>
-                <FormLabel labelStyle={{textAlign: "center"}}>Set Wait time for {this.props.currentUser.clinic_name}</FormLabel>
-                <FormInput 
-                  textAlign="left"
-                  placeholder="Enter wait time"
-                  keyboardType="numeric" 
-                  autoFocus={true}
-                  name="waitTime" 
-                  returnKeyType="done"
-                  selectionColor="black"
-                  onChangeText={ waitTime => this.handleChange(waitTime)}
-                />
-                <Button 
-                  buttonStyle={styles.button}
-                  raised
-                  title='Update Wait Time'
-                  onPress={() => {
-                    this.onFormChangeTime()
-                    this.setModalVisible(!this.state.modalVisible);
-                    this.props.toggleMenu()
-                  }}>
-                </Button>
-              </View>
-            }
+              {regVisible 
+                ? <SetWaitTime 
+                  toggleMenu={this.props.toggleMenu} 
+                  handleChange={this.handleChange} 
+                  setModalVisible={this.setModalVisible} 
+                  onFormChangeTime={this.onFormChangeTime}/> 
+                : <Register 
+                  toggleMenu={this.props.toggleMenu} 
+                  clinic_name={this.props.currentUser.clinic_name} 
+                  setModalVisible={this.setModalVisible}/>}
                 
               </View>
             </View>
@@ -120,7 +81,7 @@ export default class Navmenu extends Component {
 
           
           <ListItem onPress={() => {
-            this.setRegVisible(false)
+            this.setModalView("WaitTime")
             this.setModalVisible(!this.state.modalVisible) 
             }
           } 
@@ -128,7 +89,7 @@ export default class Navmenu extends Component {
             subtitle="Set Wait Time" subtitleStyle={styles.subtitle}
           />
           <ListItem onPress={() => {
-            this.setRegVisible(true)
+            this.setModalView(true)
             this.setModalVisible(!this.state.modalVisible) 
           }}
             key="2" title="Register" titleStyle={styles.text} />
