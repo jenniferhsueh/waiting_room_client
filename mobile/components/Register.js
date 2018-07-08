@@ -13,25 +13,30 @@ export default class Register extends Component {
           autoFocus={true}
           name="name" 
           returnKeyType="next"
-          selectionColor="black"
+          onSubmitEditing={() => this.emailInput.focus()}
         />
         <FormInput
           style={styles.input}
           keyboardType="email-address"
           placeholder="email"
           returnKeyType="next"
+          onSubmitEditing={() => this.passwordInput.focus()}
+          ref={(input) => this.emailInput = input}
         />
         <FormInput
           style={styles.input}
           placeholder="Password"
           secureTextEntry={true}
           returnKeyType="next"
+          onSubmitEditing={() => this.passConf.focus()}
+          ref={(input) => this.passwordInput = input}
         />
         <FormInput
           style={styles.input}
           placeholder="Confirm Password"
           secureTextEntry={true}
           returnKeyType="done"
+          ref={(input) => this.passConf = input}
         />
         <Button 
           buttonStyle={styles.button}

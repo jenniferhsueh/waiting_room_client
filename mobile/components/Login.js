@@ -9,15 +9,18 @@ export default class Login extends Component {
       <View Style={styles.regContainer}>
         <FormInput
           style={styles.input}
+          autoFocus={true}
           keyboardType="email-address"
           placeholder="email"
           returnKeyType="next"
+          onSubmitEditing={() => this.passwordInput.focus()}
         />
         <FormInput
           style={styles.input}
           placeholder="Password"
           secureTextEntry={true}
-          returnKeyType="next"
+          returnKeyType="done"
+          ref={(input) => this.passwordInput = input}
         />
         <Button 
           buttonStyle={styles.button}
