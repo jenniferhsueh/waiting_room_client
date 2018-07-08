@@ -10,8 +10,7 @@ export default class Navmenu extends Component {
 
   state = {
     modalVisible: false,
-    regVisible: true,
-    modalView: "Register",
+    modalView: "Login",
     waitTime: ""    
   };
 
@@ -39,11 +38,10 @@ export default class Navmenu extends Component {
     this.updateWaitTime(this.state.waitTime)
   }
 
-  render() {
-    let currentModalView;
-    switch(this.state.modalView) {
+  handleModalView = (currentModalView) => {
+    switch(currentModalView) {
       case "WaitTime":
-        currentModalView = <SetWaitTime 
+        return currentModalView = <SetWaitTime 
           toggleMenu={this.props.toggleMenu} 
           handleChange={this.handleChange} 
           setModalVisible={this.setModalVisible} 
@@ -51,12 +49,12 @@ export default class Navmenu extends Component {
           clinic_name={this.props.currentUser.clinic_name}/>
         break;
       case "Register":
-        currentModalView = <Register 
+        return currentModalView = <Register 
           toggleMenu={this.props.toggleMenu} 
           setModalVisible={this.setModalVisible}/>
         break;
       case "Login":
-        currentModalView = <Login 
+        return currentModalView = <Login 
           toggleMenu={this.props.toggleMenu} 
           setModalVisible={this.setModalVisible}/>
         break;
@@ -64,6 +62,9 @@ export default class Navmenu extends Component {
         console.log("Not a button")
        break;
     }
+  }
+
+  render() {
     return (
       <Card containerStyle={styles.container}>
         <View>
@@ -74,7 +75,7 @@ export default class Navmenu extends Component {
           >
             <View style={{marginTop: 22, backgroundColor: "pink", padding: 10}}>
               <View>
-                {currentModalView}
+                {this.handleModalView(this.state.modalView)}
               </View>
             </View>
           </Modal>
@@ -88,13 +89,13 @@ export default class Navmenu extends Component {
           />
           <ListItem 
             onPress={() => {
-              this.setModalView(true)
+              this.setModalView("Register")
               this.setModalVisible(!this.state.modalVisible) 
             }}
             key="2" title="Register" titleStyle={styles.text} />
           <ListItem 
              onPress={() => {
-              this.setModalView(true)
+              this.setModalView("Login")
               this.setModalVisible(!this.state.modalVisible) 
             }}
             key="3" title="Login"titleStyle={styles.text} />
