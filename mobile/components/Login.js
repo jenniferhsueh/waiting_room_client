@@ -3,18 +3,10 @@ import { View } from "react-native"
 import { Button, FormInput } from "react-native-elements"
 import { styles } from "../assets/styles"
 
-export default class Register extends Component {
+export default class Login extends Component {
   render() {
     return (
       <View Style={styles.regContainer}>
-        <FormInput 
-          textAlign="left"
-          placeholder="Name"
-          autoFocus={true}
-          name="name" 
-          returnKeyType="next"
-          selectionColor="black"
-        />
         <FormInput
           style={styles.input}
           keyboardType="email-address"
@@ -27,16 +19,10 @@ export default class Register extends Component {
           secureTextEntry={true}
           returnKeyType="next"
         />
-        <FormInput
-          style={styles.input}
-          placeholder="Confirm Password"
-          secureTextEntry={true}
-          returnKeyType="done"
-        />
         <Button 
           buttonStyle={styles.button}
           raised
-          title='Register'
+          title='Login'
           onPress={() => {
             this.props.setModalVisible(false);
             this.props.toggleMenu()

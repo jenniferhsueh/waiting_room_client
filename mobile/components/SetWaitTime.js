@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, StyleSheet } from "react-native"
+import { View } from "react-native"
 import { Button, FormInput, FormLabel } from "react-native-elements"
 import { styles } from "../assets/styles"
 
@@ -25,7 +25,6 @@ export default class SetWaitTime extends Component {
           title='Update Wait Time'
           onPress={() => {
             this.props.onFormChangeTime()
-            console.log(this.props.se)
             this.props.setModalVisible(false)
             this.props.toggleMenu()
           }}>
