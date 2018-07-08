@@ -13,7 +13,7 @@ const getClinics = userLocation => {
   return api
     .get('/businesses/search', {
       params: {
-        limit: 20,
+        limit: 3,
         categories: 'walkinclinics',
         ...userLocation,
       },

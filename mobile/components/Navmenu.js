@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { StyleSheet, View, Text, Image, Modal, TouchableHighlight } from "react-native"
-import { Card, ListItem, FormLabel, FormInput, FormValidationMessage } from "react-native-elements"
+import { Button, Card, ListItem, FormLabel, FormInput, FormValidationMessage } from "react-native-elements"
 
 export default class Navmenu extends Component {
 
@@ -8,6 +8,11 @@ export default class Navmenu extends Component {
     modalVisible: false,
     waitTime: ""    
   };
+
+  updateWaitTime = (waitTime) => {
+    console.log("UPDATEWAITTIME", waitTime)
+    this.props.waitMinutes(waitTime)
+  }
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
@@ -18,31 +23,38 @@ export default class Navmenu extends Component {
     console.log(this.state.waitTime)
   }
 
+  onFormChangeTime = () => {
+    console.log("CHANGED TIIIIIMMEEEEE")
+    this.updateWaitTime(this.state.waitTime)
+  }
+
   render() {
     return (
       <Card containerStyle={styles.container}>
         <View >
-
           <Modal 
             animationType="fade"
             transparent={false}
             visible={this.state.modalVisible}
           >
-            <View style={{marginTop: 22}}>
+            <View style={{marginTop: 22, backgroundColor: "pink", padding: 10}}>
               <View>
-                <FormLabel>Set Wait time for </FormLabel>
+                <FormLabel labelStyle={{textAlign: "center"}}>Set Wait time for </FormLabel>
                 <FormInput 
+                  style={{labelStyle: "center"}}
+                  placeholder="Enter current wait time"
                   keyboardType="numeric" 
-                  autofocus={true}
+                  autoFocus={true}
                   name="waitTime" 
                   onChangeText={ waitTime => this.handleChange(waitTime)}
                 />
-                <Text>{this.state.waitTime}</Text>
                 <TouchableHighlight
                   onPress={() => {
+                    this.onFormChangeTime()
                     this.setModalVisible(!this.state.modalVisible);
+                    this.props.toggleMenu()
                   }}>
-                  <Text>Update Time</Text>
+                  <Text style={{textAlign: "center"}}>Update Wait Time</Text>
                 </TouchableHighlight>
 
               </View>
@@ -68,7 +80,6 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 0,
     margin: 0,
- 
     backgroundColor: "#476DC5"
   },
   text: {
@@ -76,5 +87,8 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     color: "lightgrey"
+  },
+  formText: {
+    color: "black"
   }
 })

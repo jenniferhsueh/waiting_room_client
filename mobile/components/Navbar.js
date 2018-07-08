@@ -11,7 +11,6 @@ export default class Navbar extends Component {
           centerComponent={{ text: "FLUFFY BUNNIES", style: { color: "#fff" } }}
           rightComponent={{ icon: 'menu', color: '#fff', onPress: () => this.props.toggleMenu() }}
         />
-        />
       </View>
     );
   }
