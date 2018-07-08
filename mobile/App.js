@@ -28,14 +28,14 @@ export default class App extends React.Component {
     clinics: [],
     modalVisible: false,
     currentUser: {
-      clinic_id: "7HrLNyrswDEFppuwn67aUg"
+      clinic_id: "7HrLNyrswDEFppuwn67aUg",
+      clinic_name: "Aquarius Medical Clinic"
     },
   }
 
   getWaitTime = (waitTime) => {
     
     this.state.clinics.map((clinic, index) => {
-      console.log("CLINIC", clinic)
       if (clinic.id === this.state.currentUser.clinic_id) {
         this.state.clinics[index].wait_time = parseInt(waitTime);
         this.forceUpdate()
@@ -91,7 +91,7 @@ export default class App extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <Navbar toggleMenu={this.toggleMenu}/>
-        { menuView ? <Navmenu toggleMenu={this.toggleMenu} clinics={clinics} waitMinutes={this.getWaitTime}/> : ""}
+        { menuView ? <Navmenu toggleMenu={this.toggleMenu} clinics={clinics} waitMinutes={this.getWaitTime} currentUser={this.state.currentUser}/> : ""}
         <NavButtons toggleView={this.toggleView}/>
         { mapView ? <Map region={region} places={clinics} /> : <ListEntry places={clinics} />  }
       </SafeAreaView>
