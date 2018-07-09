@@ -4,8 +4,6 @@ const app = express();
 
 var PORT = 8080
 
-console.log("=====>>>>>>")
-
 module.exports = (knex) => {
 
     router.get("/", (req, res, next) => {
@@ -33,6 +31,17 @@ module.exports = (knex) => {
      })
 
  });
+
+    router.post("/", (req, res, next) => {
+        // {email, password} = req.body
+        console.log("OUR STATE=====>", req.body)
+    });
+
+
+    router.post("/new", (req, res, next) => {
+        // {email, password} = req.body
+        console.log("OUR NEW USER =====>", req.body)
+    });
 
  return router
 
