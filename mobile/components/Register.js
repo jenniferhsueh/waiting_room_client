@@ -9,32 +9,40 @@ Amplify.configure(config)
 
 export default class Register extends Component {
   state = {
-    authCode: '',
-    user: {}
+    name: '',
+    username: '',
+    password: '',
+    phone_number: '',
+    email: '',
+    confirmationCode: ''
   }
-  onChangeText(authCode) {
-    this.setState({ authCode })
+  onChangeText(key, value) {
+    this.setState({
+      [key]: value
+    })
   }
+  
+
   signUp() {
     console.log("REGISTERINGGGGGGG ==============>");
     Auth.signUp({ 
-      username: 'Jenhsueh15@gmail.com',
-      password: 'Wait_123',
+     username: this.state.username,
+      password: this.state.password,
       attributes: {
-        phone_number: '+16043151860',
-        // email: 'Jenhsueh15@gmail.com'
+        email: this.state.email,
+        phone_number: this.state.phone_number
       }
     })
     .then(res => {
-      console.log('successful signup: ', res)
+      console.log('successful registration: ', res)
     })
     .catch(err => {
-      console.log('error signing up: ', err)
+      console.log('error registering: ', err)
     })
   }
-  confirmUser() { 
-    const { authCode } = this.state
-    Auth.confirmSignUp('user', authCode)
+  confirmSignUp() {
+    console.log("CONFIRMATION REGISTRATION ==============>");
+    Auth.confirmSignUp(this.state.username, this.state.confirmationCode)
       .then(res => {
         console.log('successful confirmation: ', res)
       })
@@ -47,9 +55,7 @@ export default class Register extends Component {
     return (
       <View Style={styles.regContainer}>
         <FormInput 
-          // onChangeText={value => this.onChangeText('name', value)}
-          onChangeText={value => this.onChangeText(value)}
-          textAlign="left"
+          onChangeText={value => this.onChangeText('namename', value)}
           placeholder="Name"
           autoFocus={true}
           name="name" 
@@ -57,13 +63,22 @@ export default class Register extends Component {
           onSubmitEditing={() => this.emailInput.focus()}
         />
         <FormInput
+          onChangeText={value => this.onChangeText('username', value)}
+          style={styles.input}
+          keyboardType="email-address"
+          placeholder="Email"
+          returnKeyType="next"
+          onSubmitEditing={() => this.emailConfInput.focus()}
+          ref={(input) => this.emailInput = input}
+        />
+        <FormInput
           onChangeText={value => this.onChangeText('email', value)}
           style={styles.input}
           keyboardType="email-address"
-          placeholder="email"
+          placeholder="Confirm Email"
           returnKeyType="next"
           onSubmitEditing={() => this.phoneInput.focus()}
-          ref={(input) => this.emailInput = input}
+          ref={(input) => this.emailConfInput = input}
         />
          <FormInput 
           onChangeText={value => this.onChangeText('phone_number', value)}
@@ -101,16 +116,16 @@ export default class Register extends Component {
           }}>
         </Button>
         <FormInput
-          // onChangeText={value => this.onChangeText('confirmationCode', value)}
-          onChangeText={value => this.onChangeText(value)}
+          onChangeText={value => this.onChangeText('confirmationCode', value)}
           style={styles.input}
+          keyboardType="numeric"
           placeholder='Confirmation Code'
         />
         <Button 
           buttonStyle={styles.button}
           title="Confirm Registration" 
           onPress={() => {
-            this.confirmSignUp
+            this.confirmSignUp()
             this.props.setModalVisible(false);
             this.props.toggleMenu()
           }}

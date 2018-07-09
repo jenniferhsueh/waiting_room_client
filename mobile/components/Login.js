@@ -7,7 +7,9 @@ import { Auth } from "aws-amplify"
 
 export default class Login extends Component {
   state = {
-    authCode: '',
+    username: '',
+    password: '',
+    confirmationCode: '',
     user: {}
   }
 
@@ -18,6 +20,8 @@ export default class Login extends Component {
   }
 
   signIn() {
+    console.log("LOGGINNNNNNNNNNN ==============>");
+    const { username, password } = this.state
     Auth.signIn(username, password)
       .then(user => {
         this.setState({ user })
@@ -25,14 +29,16 @@ export default class Login extends Component {
       .catch(err => {
         console.log('error signing in: ', err)
       })
-  }
+  }r
 
   confirmSignIn() {
-    Auth.confirmSignIn(user, authCode)
+    console.log("CONFIRMATION LOGGING INNNNNNNN ==============>");
+    const { user, confirmationCode } = this.state
+    Auth.confirmSignIn(user, confirmationCode)
       .then(user => {
         console.log('user: ', user)
       }).catch(err => {
-        console.log('error confirming sign in: ', err)
+        console.log('error confirming login: ', err)
       })
   }
 
@@ -40,7 +46,7 @@ export default class Login extends Component {
     return (
       <View Style={styles.regContainer}>
         <FormInput
-          onChangeText={value => this.onChangeText('name', value)}
+          onChangeText={value => this.onChangeText('username', value)}
           style={styles.input}
           autoFocus={true}
           keyboardType="email-address"
@@ -61,7 +67,7 @@ export default class Login extends Component {
           raised
           title='Login'
           onPress={() => {
-            this.signIn
+            this.signIn();
           }}>
         </Button>
         <FormInput
@@ -73,9 +79,9 @@ export default class Login extends Component {
           buttonStyle={styles.button}
           title="Confirm Login" 
           onPress={() => {
-            this.confirmSignIn
+            this.confirmSignIn();
             this.props.setModalVisible(false);
-            this.props.toggleMenu()
+            this.props.toggleMenu();
           }}/> 
         />
       </View>
