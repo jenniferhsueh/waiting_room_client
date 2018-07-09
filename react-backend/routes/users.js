@@ -1,17 +1,87 @@
-var express = require('express');
-var router = express.Router();
-var app = express();
+const express = require('express');
+const router = express.Router();
+const app = express();
+
 var PORT = 8080
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.json([{
-  	id: 1,
-  	username: "samsepi0l"
-  }, {
-  	id: 2,
-  	username: "D0loresH4ze"
-  }]);
-});
+console.log("=====>>>>>>")
 
-module.exports = router;
+module.exports = (knex) => {
+
+ router.get("/", (req, res, next) => {
+ 	console.log("My users")
+   knex.select('*').from('users')
+     .then((results) => {
+     	console.log("====>", results)
+       res.json(results)
+     })
+     .catch((e) => {
+       res.status(500).send(e);
+     })
+
+ });
+
+ router.get("/:id", (req, res, next) => {
+   knex.select('*').from('users')
+     .where('id', '=', req.params.id)
+     .then((results) => {
+       res.json(results)
+     })
+     .catch((e) => {
+       res.status(500).send(e);
+     })
+
+ });
+
+ return router
+}
+
+/* GET users listing. */
+// router.get('/', function(req, res, next) {
+//   res.json([{
+//       first_name: "Jennifer", 
+//       last_name: "Hsueh", 
+//       phone: 6043151860, 
+//       email: "jenn@jenn.com", 
+//       password: "jenn",
+//       deposit: false,
+//       location: {
+//         address1:"128 W Hastings St",
+//         address2: "",
+//         address3: "",
+//         city: "Vancouver",
+//         state: "BC",
+//         Zipcode: "V6B 1G8",
+//         country: "Canada",
+//       },
+//       coordinates: {
+//         lat: "41.864128", 
+//         long: "-87.669449"
+//       },
+//       clinics_id: 1
+//     },
+//     {
+//       first_name: "Joel", 
+//       last_name: "Shinness", 
+//       phone: 6043151860, 
+//       email: "joel@jenn.com", 
+//       password: "joel",
+//       deposit: true,
+//       location: {
+//         address1:"534 W Pender St",
+//         address2: "",
+//         address3: "",
+//         city: "Vancouver",
+//         state: "BC",
+//         Zipcode: "V6B 1V3",
+//         country: "Canada",
+//       },
+//       coordinates: {
+//         lat: "49.283599", 
+//         long: "-123.113811"
+//       },
+//       clinics_id: 2
+//     }]);
+// });
+
+// module.exports = router;
