@@ -6,8 +6,6 @@ var cookieParser      = require('cookie-parser');
 var logger            = require('morgan');
 const request         = require('request');
 const usersRoutes     = require("./routes/users");
-const knex            = require('knex');
-
 var yelpToken = process.env.YELP_API_KEY;
 
 var indexRouter = require('./routes/index');

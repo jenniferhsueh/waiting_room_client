@@ -4,13 +4,9 @@ const app = express();
 
 var PORT = 8080
 
-console.log("=====>>>>>>")
-
 module.exports = (knex) => {
 
 	router.get("/", (req, res, next) => {
-	 knex.select('*').from('users')
-	   .then((results) => {
 	 knex.select('*').from('users')
 	   .then((results) => {
 	     res.json(results)
@@ -22,17 +18,16 @@ module.exports = (knex) => {
 	});
 
 	router.get("/:id", (req, res, next) => {
-	 knex.select('*').from('users')
-	   .where('id', '=', req.params.id)
-	   .then((results) => {
-	     res.json(results)
-	   })
-	   .catch((e) => {
-	     res.status(500).send(e);
-	   })
+   knex.select('*').from('users')
+     .where('id', '=', req.params.id)
+     .then((results) => {
+       res.json(results)
+     })
+     .catch((e) => {
+       res.status(500).send(e);
+     })
+     
+ });
 
-		});
-
- 	return router
-	}
+ return router
 }
