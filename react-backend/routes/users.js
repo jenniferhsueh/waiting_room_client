@@ -9,23 +9,26 @@ console.log("=====>>>>>>")
 module.exports = (knex) => {
 
     router.get("/", (req, res, next) => {
-     knex.select('*').from('users')
-       .then((results) => {
+     knex
+      .select('*')
+      .from('users')
+      .then((results) => {
          res.json(results)
        })
-       .catch((e) => {
+      .catch((e) => {
          res.status(500).send(e);
        })
 
     });
 
     router.get("/:id", (req, res, next) => {
-   knex.select('*').from('users')
-     .where('id', '=', req.params.id)
-     .then((results) => {
+   knex
+    .select('*').from('users')
+    .where('id', '=', req.params.id)
+    .then((results) => {
        res.json(results)
      })
-     .catch((e) => {
+    .catch((e) => {
        res.status(500).send(e);
      })
 
