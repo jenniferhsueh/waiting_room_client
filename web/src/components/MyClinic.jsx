@@ -8,6 +8,7 @@ class MyClinic extends Component {
   state = {
     open: false,
     minutes: '',
+    clinicName: ''
   }
 
   onOpenModal = () => {
@@ -34,6 +35,16 @@ class MyClinic extends Component {
     }
   }
 
+  getClinicNameForCurrentUser = () => {
+    let clinName;
+    this.props.clinic.map((clinic, index) => {
+      if (clinic.id === this.props.currentUser.id) {
+        clinName = clinic.name
+      }
+    })
+    return clinName
+  }
+
   render() {
     const { open } = this.state;
     return (
@@ -45,7 +56,7 @@ class MyClinic extends Component {
           className="my-clinic"
           open={open} onClose={ this.onCloseModal }
           center>
-        <h1>Set Wait Time for {  }</h1>
+        <h1>Set Wait Time for { this.getClinicNameForCurrentUser() }</h1>
           <input className="number-selector"
             autoFocus={true}
             type="number"

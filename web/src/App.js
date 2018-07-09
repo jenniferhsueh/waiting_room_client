@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch } from 'react-router';
 import FadeIn from 'react-fade-in';
 import './App.css';
 import LoadScreen from './components/LoadScreen';
@@ -56,7 +55,7 @@ class App extends Component {
   }
 
   render() {
-    const { loading, currentWaitTime } = this.state
+    const { loading } = this.state
 
     setTimeout(() =>
       navigator.geolocation.getCurrentPosition((position) => {
@@ -71,7 +70,7 @@ class App extends Component {
     } else {
       return (
       <div className="main-container">
-        <Nav waitTime={this.getWaitTime}/>
+        <Nav waitTime={this.getWaitTime} clinic={ this.state.clinics } currentUser={ this.state.currentUser }/>
         <FadeIn transitionDuration={2000}>
           <div className="body-container">
             <ClinicList clinicList={this.state.clinics}/>

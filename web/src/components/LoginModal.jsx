@@ -12,7 +12,7 @@ class LoginModal extends Component {
   state = {
     open: false,
     email: "",
-    password: ""
+    pw: ""
   };
 
   validateForm() {
@@ -27,6 +27,7 @@ class LoginModal extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.sendLoginData();
   }
 
   onOpenModal = () => {
@@ -36,6 +37,21 @@ class LoginModal extends Component {
   onCloseModal = () => {
     this.setState({ open: false });
   };
+
+  sendLoginData = (e) => {
+    let data = {
+      ...this.state, ...this.props
+      }
+     fetch('/api/users', {
+        method:'POST',
+        headers: {
+          'Content-type':'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then(function (response) {
+        return response.json()
+      })
+    }
 
   render() {
     const { open } = this.state;
@@ -67,13 +83,14 @@ class LoginModal extends Component {
             <br/>
             <br/>
             <RaisedButton
-              label="Register"
+              label="Login"
               primary={true}
               style={{
                 marginLeft:75
               }}
               onClick={(event, close) =>
                 this.handleSubmit(event, this.onCloseModal())
+
               }/>
           </div>
         </MuiThemeProvider>

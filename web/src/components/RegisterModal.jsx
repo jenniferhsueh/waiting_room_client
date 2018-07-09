@@ -30,7 +30,7 @@ class RegisterModal extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state)
+    this.sendRegisterData();
   }
 
   onOpenModal = () => {
@@ -52,6 +52,21 @@ class RegisterModal extends Component {
       console.log('field is blank')
     }
   }
+
+  sendRegisterData = (e) => {
+    let data = {
+      ...this.state, ...this.props
+      }
+     fetch('/api/users/new', {
+        method:'POST',
+        headers: {
+          'Content-type':'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then(function (response) {
+        return response.json()
+      })
+    }
 
   render() {
     const { open } = this.state;

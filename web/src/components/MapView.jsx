@@ -41,7 +41,7 @@ class MapView extends Component {
               <Marker key={clinic.id} latitude={clinic.coordinates.latitude} longitude={clinic.coordinates.longitude} offsetLeft={-20} offsetTop={-10} openModal={() => this.onListItemClick(clinic)} item={clinic} >
 
               <div
-                classname="time-card"
+                className="time-card"
                 onClick={() => this.onListItemClick(clinic)} >
                 <div className="wait-time-marker">{ clinic.wait_time } mins</div>
                   <span
@@ -49,7 +49,7 @@ class MapView extends Component {
                       fontSize:30,
                       color:'#5FB3D0'
                     }}
-                    role="img"><i class="fas fa-map-marker-alt"></i>
+                    role="img"><i className="fas fa-map-marker-alt"></i>
                   </span>
                 </div>
               </Marker>);

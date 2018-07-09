@@ -1,5 +1,5 @@
 .nav {
-  background-color: #fff;
+  background-color: #78BCC7;
   display: flex;
   height: 85px;
   width: 100%;
@@ -24,6 +24,7 @@
 }
 
 .nav .text-logo {
+  color:#fff;
   font-family: 'Cookie', cursive;
   margin-left: 10px;
   font-size: 32px;
@@ -33,6 +34,7 @@
 }
 
 .nav-right {
+  color: #fff;
   display: flex;
   padding-right: 25px;
   margin-left: auto;
