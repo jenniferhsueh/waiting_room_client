@@ -71,6 +71,9 @@ class RegisterModal extends Component {
             <label>Are you registering a clinic?</label>
             <Switch
               onChange={ this.setAdmin }
+              style={{
+                color:'black'
+              }}
             />
            <br/>
             <TextField
