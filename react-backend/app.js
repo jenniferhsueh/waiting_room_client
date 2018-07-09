@@ -29,7 +29,7 @@ const knex = require('knex')(knexConfig);
 
 app.use('/api/clinics', clinicsRouter)
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter(knex));
 app.get('/businesses', (req, res) => {
   request({
     url: 'https://api.yelp.com/v3/businesses/search?latitude=49.2838799&longitude=-123.1107835&categories=walkinclinics',
