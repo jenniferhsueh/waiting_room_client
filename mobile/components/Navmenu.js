@@ -6,6 +6,10 @@ import Register from "./Register"
 import Login from "./Login"
 import { styles } from "../assets/styles"
 
+import Amplify, { Auth } from 'aws-amplify'
+import config from '../aws-exports'
+Amplify.configure(config)
+
 export default class Navmenu extends Component {
 
   state = {

@@ -8,6 +8,10 @@ import NavButtons from "./components/NavButtons"
 import ListEntry from "./components/ListEntry"
 import Navmenu from "./components/Navmenu"
 
+import Amplify, { Auth } from 'aws-amplify'
+import config from './aws-exports'
+Amplify.configure(config)
+
 const region = {
   latitude: 49.246292,
   longitude: -123.116226,
