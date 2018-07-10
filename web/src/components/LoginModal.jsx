@@ -10,6 +10,7 @@ import '../component-styles/LoginModal.css';
 
 class LoginModal extends Component {
   state = {
+    currentUser: {},
     open: false,
     email: "",
     pw: ""
@@ -49,9 +50,17 @@ class LoginModal extends Component {
         },
         body: JSON.stringify(data)
       }).then(function (response) {
-        return response.json()
+        return response
       })
+      .then((res) => res.json())
+      .then((currentUser) =>
+        this.setState({
+          currentUser
+        }))
+      .then(() => this.props.getCurrentUser(this.state.currentUser))
     }
+
+
 
   render() {
     const { open } = this.state;

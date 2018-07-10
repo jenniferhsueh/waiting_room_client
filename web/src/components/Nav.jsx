@@ -15,6 +15,19 @@ class Nav extends Component {
     this.props.waitTime(waitTime)
   }
 
+  getCurrentUser = (user) => {
+    this.setState({
+      user
+    })
+    return user
+  }
+
+  logoutUser = (user) => {
+    if (user === this.state.user) {
+      this.state.user = ""
+    }
+  }
+
   render() {
     const { open } = this.state;
     return (
@@ -23,11 +36,13 @@ class Nav extends Component {
           <img width="20" src={logo} alt="clock-logo"/>
           <h1 className="text-logo">Waiting Room</h1>
           <div className="nav-right">
-            <MyClinic open={ open } waitMinutes={this.currentWaitTime} clinic={ this.props.clinic } currentUser={ this.props.currentUser }/>
+            { this.state.user ? <div className="item">Hello, { this.state.user.first_name }</div> : ""}
+            { this.state.user && this.state.user.clinic_id ? <MyClinic open={ open } waitMinutes={ this.currentWaitTime } clinic={ this.props.clinic } currentUser={ this.props.currentUser }/> : ""}
             <div className="item">For Patients</div>
             <div className="item">For Clinics</div>
-            <RegisterModal open={ open }/>
-            <LoginModal />
+            { this.state.user ? "" : <RegisterModal open={ open }/> }
+            { this.state.user ? "" : <LoginModal currentUser={ this.props.currentUser } getCurrentUser={ this.getCurrentUser } /> }
+            { !this.state.user ? "" : <div className="item" onClick={ () => this.logoutUser(this.state.user) } >Logout</div> }
           </div>
         </div>
       </div>

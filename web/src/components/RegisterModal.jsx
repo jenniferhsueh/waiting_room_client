@@ -31,6 +31,15 @@ class RegisterModal extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.sendRegisterData();
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      pw: '',
+      confirmPw: '',
+      admin: false
+    })
+    console.log("=====>", this.state)
   }
 
   onOpenModal = () => {
@@ -64,7 +73,7 @@ class RegisterModal extends Component {
         },
         body: JSON.stringify(data)
       }).then(function (response) {
-        return response.json()
+        return response
       })
     }
 
