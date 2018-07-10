@@ -31,14 +31,60 @@ app.use('/api/clinics', clinicsRouter)
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter(knex));
 app.get('/businesses', (req, res) => {
-  request({
-    url: 'https://api.yelp.com/v3/businesses/search?latitude=49.2838799&longitude=-123.1107835&categories=walkinclinics',
-    auth: {
-      bearer: yelpToken
-    }
-  }, (error, response, body) => {
-    res.json(JSON.parse(body));
-  });
+
+  knex('clinics').select('*')
+    .then((results) => {
+      console.log('results from app.js =====>', results)
+      if (results.length > 0) {
+        res.json({businesses: results});
+      } else {
+        request({
+          url: 'https://api.yelp.com/v3/businesses/search?latitude=49.2838799&longitude=-123.1107835&categories=walkinclinics',
+          auth: {
+            bearer: yelpToken
+          }
+        }, (error, response, body) => {
+          if (error) {
+            console.log("oh shit son", error);
+            res.status(500).json(error);
+            return;
+          }
+          let clinics = JSON.parse(body).businesses.map(clinic => ({
+            name: clinic.name,
+            phone: clinic.phone,
+            hours: clinic.hours,
+            avg_wait_time: (Math.floor(Math.random() * 60)),
+            location: {
+              address1: clinic.location.address1,
+              address2: "",
+              address3: "",
+              city: clinic.location.city,
+              state: clinic.location.state,
+              Zipcode: clinic.location.zip_code,
+              country: clinic.location.country,
+            },
+            coordinates: {
+              lat: clinic.coordinates.latitude,
+              long: clinic.coordinates.longitude
+            }
+          }));
+          knex('clinics')
+            .insert(clinics)
+            .returning('*')
+            .catch(() => {console.log("error 79");})
+            .then((results) => {
+              res.json({businesses: results});
+            })
+            .catch(() => {console.log("error 83");})
+        });
+
+
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({error: "error 90"})
+    })
+
 });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

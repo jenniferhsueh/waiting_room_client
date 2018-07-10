@@ -2,9 +2,9 @@ exports.seed = function(knex, Promise) {
   return knex("clinics").del()
     .then(function () {
       return knex("clinics").returning("*").insert([
-        { 
-          name: "Loyal Medical Clinic", 
-          phone: 6044288313, 
+        {
+          name: "Loyal Medical Clinic",
+          phone: 6044288313,
           hours: {
             Monday: "9:00am - 6:00pm",
             Tuesday: "9:00am - 6:00pm",
@@ -25,13 +25,13 @@ exports.seed = function(knex, Promise) {
             country: "Canada",
           },
           coordinates: {
-            lat: "49.286494", 
+            lat: "49.286494",
             long: "-123.121436"
           }
         },
-        { 
-          name: "Ultima Medicentre", 
-          phone: 6046838138, 
+        {
+          name: "Ultima Medicentre",
+          phone: 6046838138,
           hours: {
             Monday: "Closed",
             Tuesday: "8:00am - 4:00pm",
@@ -53,7 +53,7 @@ exports.seed = function(knex, Promise) {
 
           },
           coordinates: {
-            lat: "49.285391", 
+            lat: "49.285391",
             long: "-123.121550"
           }
         }
