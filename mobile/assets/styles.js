@@ -14,23 +14,37 @@ export const styles = StyleSheet.create({
     color: "lightgrey"
   },
   formText: {
-    color: "black"
+    color: "white",
+    fontSize: 20,
+    padding: 20
   },
   button: {
     width: "60%",
     alignSelf: "center",
-    marginTop: 10
+    margin: 15
   },
   input: {
     height: 50,
     borderBottomWidth: 2,
-    borderBottomColor: "#2196F3",
-    margin: 10
+    borderBottomColor: "#2196F3"
   },
   regContainer: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
+  },
+  appContainer: {
+    flex: 1,
+    backgroundColor: "#eee",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  map: {
+    left: 0,
+    right:0,
+    top: 0,
+    bottom: 0,
+    position: 'absolute'
   }
 })

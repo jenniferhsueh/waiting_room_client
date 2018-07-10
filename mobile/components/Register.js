@@ -116,18 +116,18 @@ export default class Register extends Component {
           }}>
         </Button>
         <FormInput
+          keyboardType="numeric"
           onChangeText={value => this.onChangeText('confirmationCode', value)}
           style={styles.input}
-          keyboardType="numeric"
           placeholder='Confirmation Code'
         />
         <Button 
           buttonStyle={styles.button}
           title="Confirm Registration" 
           onPress={() => {
-            this.confirmSignUp()
+            this.confirmSignUp();
             this.props.setModalVisible(false);
-            this.props.toggleMenu()
+            this.props.toggleMenu();
           }}
         />
       </View>
