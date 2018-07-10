@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { View } from "react-native"
-import { Button, FormInput } from "react-native-elements"
+import { Text, Button, FormInput, overlay } from "react-native-elements"
 import { styles } from "../assets/styles"
 
 import { Auth } from "aws-amplify"
@@ -45,12 +45,15 @@ export default class Login extends Component {
   render() {
     return (
       <View Style={styles.regContainer}>
+        <Text style={styles.formText}>
+          Welcome back,{"\n"}Please login to continue
+        </Text>
         <FormInput
           onChangeText={value => this.onChangeText('username', value)}
           style={styles.input}
           autoFocus={true}
           keyboardType="email-address"
-          placeholder="email"
+          placeholder="Email"
           returnKeyType="next"
           onSubmitEditing={() => this.passwordInput.focus()}
         />
@@ -73,6 +76,7 @@ export default class Login extends Component {
         <FormInput
           onChangeText={value => this.onChangeText('confirmationCode', value)}
           style={styles.input}
+          keyboardType="numeric"
           placeholder='Confirmation Code'
         />
         <Button 

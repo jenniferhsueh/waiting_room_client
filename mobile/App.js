@@ -7,10 +7,7 @@ import Navbar from "./components/Navbar"
 import NavButtons from "./components/NavButtons"
 import ListEntry from "./components/ListEntry"
 import Navmenu from "./components/Navmenu"
-
-import Amplify, { Auth } from 'aws-amplify'
-import config from './aws-exports'
-Amplify.configure(config)
+import { styles } from "./assets/styles"
 
 const region = {
   latitude: 49.246292,
@@ -34,7 +31,7 @@ export default class App extends React.Component {
     currentUser: {
       clinic_id: "7HrLNyrswDEFppuwn67aUg",
       clinic_name: "Aquarius Medical Clinic"
-    },
+    }
   }
 
   getWaitTime = (waitTime) => {
@@ -93,8 +90,8 @@ export default class App extends React.Component {
     const { region, clinics, mapView, menuView } = this.state;
 
     return (
-      <SafeAreaView style={styles.container}>
-        <Navbar toggleMenu={this.toggleMenu}/>
+      <SafeAreaView style={styles.appContainer}>
+        <Navbar toggleMenu={this.toggleMenu} />
         { menuView ? <Navmenu toggleMenu={this.toggleMenu} clinics={clinics} waitMinutes={this.getWaitTime} currentUser={this.state.currentUser}/> : ""}
         <NavButtons toggleView={this.toggleView}/>
         { mapView ? <Map region={region} places={clinics} /> : <ListEntry places={clinics} />  }
@@ -102,19 +99,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#eee",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  map: {
-    left: 0,
-    right:0,
-    top: 0,
-    bottom: 0,
-    position: 'absolute'
-  }
-})

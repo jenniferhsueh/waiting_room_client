@@ -6,16 +6,13 @@ import Register from "./Register"
 import Login from "./Login"
 import { styles } from "../assets/styles"
 
-import Amplify, { Auth } from 'aws-amplify'
-import config from '../aws-exports'
-Amplify.configure(config)
-
 export default class Navmenu extends Component {
 
   state = {
     modalVisible: false,
     modalView: "Login",
-    waitTime: ""    
+    waitTime: "",
+    username: ""    
   };
 
   updateWaitTime = (waitTime) => {
@@ -30,12 +27,8 @@ export default class Navmenu extends Component {
     this.setState({modalView});
   }
 
-  // handleSubmit = () => {
-
-  // }
-
   handleChange = (waitTime) => {
-    this.setState({ waitTime })
+    this.setState({waitTime})
   }
 
   onFormChangeTime = () => {
