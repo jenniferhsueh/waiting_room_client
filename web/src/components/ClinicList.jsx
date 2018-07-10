@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../component-styles/ClinicList.css';
-import ClinicListItem from './ClinicListItem.js';
+import ClinicListItem from './ClinicListItem';
 import ClinicModal from './ClinicModal';
 
 class ClinicList extends Component {

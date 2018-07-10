@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../component-styles/MapBox.css';
-import MapView from './MapView.js';
+import MapView from './MapView';
 
 class MapBox extends Component {
   render() {

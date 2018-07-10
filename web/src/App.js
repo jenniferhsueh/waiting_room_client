@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import FadeIn from 'react-fade-in';
 import './App.css';
-import LoadScreen from './components/LoadScreen.js';
-import Nav from './components/Nav.js';
-import ClinicList from './components/ClinicList.js';
-import MapBox from './components/MapBox.js';
+import LoadScreen from './components/LoadScreen';
+import Nav from './components/Nav';
+import ClinicList from './components/ClinicList';
+import MapBox from './components/MapBox';
 
 
 class App extends Component {
@@ -55,7 +55,7 @@ class App extends Component {
   }
 
   render() {
-    const { loading, currentWaitTime } = this.state
+    const { loading } = this.state
 
     setTimeout(() =>
       navigator.geolocation.getCurrentPosition((position) => {
@@ -70,7 +70,7 @@ class App extends Component {
     } else {
       return (
       <div className="main-container">
-        <Nav waitTime={this.getWaitTime}/>
+        <Nav waitTime={this.getWaitTime} clinic={ this.state.clinics } currentUser={ this.state.currentUser }/>
         <FadeIn transitionDuration={2000}>
           <div className="body-container">
             <ClinicList clinicList={this.state.clinics}/>

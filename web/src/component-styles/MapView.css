@@ -2,7 +2,33 @@
   border-radius: 5px;
   margin: 5px;
   height: 98%;
-  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75);
+}
+
+.wait-time-marker {
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  background: #FEAB09;
+  border-radius: .4em;
+  top: -15px;
+      padding: 5px;
+}
+
+.wait-time-marker:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: #FEAB09;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -10px;
+  margin-bottom: -20px;
+}
+
+.wait-time-marker:hover {
+  border: 2px solid #C43A41;
+  z-index: 1;
 }
