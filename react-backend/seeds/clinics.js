@@ -25,8 +25,8 @@ exports.seed = function(knex, Promise) {
             country: "Canada",
           },
           coordinates: {
-            lat: "49.286494",
-            long: "-123.121436"
+            latitude: "49.286494",
+            longitude: "-123.121436"
           }
         },
         {

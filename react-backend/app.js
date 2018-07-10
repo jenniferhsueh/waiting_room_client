@@ -35,7 +35,7 @@ app.get('/businesses', (req, res) => {
   knex('clinics').select('*')
     .then((results) => {
       console.log('results from app.js =====>', results)
-      if (results.length > 0) {
+      if (results.length > 2) {
         res.json({businesses: results});
       } else {
         request({
@@ -64,8 +64,8 @@ app.get('/businesses', (req, res) => {
               country: clinic.location.country,
             },
             coordinates: {
-              lat: clinic.coordinates.latitude,
-              long: clinic.coordinates.longitude
+              latitude: clinic.coordinates.latitude,
+              longitude: clinic.coordinates.longitude
             }
           }));
           knex('clinics')
