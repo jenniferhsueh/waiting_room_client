@@ -16,33 +16,26 @@ module.exports = (knex) => {
       .catch((e) => {
          res.status(500).send(e);
        })
-
     });
 
     router.get("/:id", (req, res, next) => {
-   knex
-    .select('*').from('users')
-    .where('id', '=', req.params.id)
-    .then((results) => {
-       res.json(results)
-     })
-    .catch((e) => {
-       res.status(500).send(e);
-     })
-
- });
-
-    router.post("/", (req, res, next) => {
-        // {email, password} = req.body
-        console.log("OUR STATE=====>", req.body)
+     knex
+      .select('*')
+      .from('users')
+      .where('id', '=', req.params.id)
+      .then((results) => {
+         res.json(results)
+       })
+      .catch((e) => {
+         res.status(500).send(e);
+       })
     });
-
 
     router.post("/new", (req, res, next) => {
       let newUser;
 
       if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.pw || !req.body.confirmPw || req.body.pw !== req.body.confirmPw) {
-        res.status(400).send(console.log("youre a little beee yatch"))
+        res.status(400)
 
       } else {
         knex('users')
@@ -70,13 +63,33 @@ module.exports = (knex) => {
             clinics_id: null
           }
         )
-        .then(() => console.log("WE DEEEED IIIIIT", newUser))
         .catch((e) => {
-          console.log("====>", e)
            res.status(500).send(e);
         })
       }
     });
+
+    router.post("/", (req, res) => {
+      if (!req.body.email || !req.body.pw) {
+        return res.status(400)
+
+      } else {
+        let currentUser;
+        knex('users')
+          .where({
+            email: req.body.email,
+            password: req.body.pw
+          })
+          .select("*")
+          .then((results) => {
+             currentUser = results[0]
+             res.send(currentUser)
+           })
+          .catch((e) => {
+             res.status(500).send(e);
+           })
+        }
+    })
 
  return router
 }

@@ -3,10 +3,10 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       return knex("users").returning("*").insert([
         {
-          first_name: "Jennifer", 
-          last_name: "Hsueh", 
-          phone: 6043151860, 
-          email: "jenn@jenn.com", 
+          first_name: "Jennifer",
+          last_name: "Hsueh",
+          phone: 6043151860,
+          email: "jenn@jenn.com",
           password: "jenn",
           deposit: false,
           location: {
@@ -19,16 +19,16 @@ exports.seed = function(knex, Promise) {
             country: "Canada",
           },
           coordinates: {
-            lat: "41.864128", 
+            lat: "41.864128",
             long: "-87.669449"
           },
           clinics_id: 1
         },
         {
-          first_name: "Joel", 
-          last_name: "Shinness", 
-          phone: 6043151860, 
-          email: "joel@jenn.com", 
+          first_name: "Joel",
+          last_name: "Shinness",
+          phone: 6043151860,
+          email: "joel@jenn.com",
           password: "joel",
           deposit: true,
           location: {
@@ -41,7 +41,7 @@ exports.seed = function(knex, Promise) {
             country: "Canada",
           },
           coordinates: {
-            lat: "49.283599", 
+            lat: "49.283599",
             long: "-123.113811"
           },
           clinics_id: 2
