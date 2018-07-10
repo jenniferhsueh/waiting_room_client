@@ -60,8 +60,6 @@ class LoginModal extends Component {
       .then(() => this.props.getCurrentUser(this.state.currentUser))
     }
 
-
-
   render() {
     const { open } = this.state;
     return (
@@ -99,7 +97,6 @@ class LoginModal extends Component {
               }}
               onClick={(event, close) =>
                 this.handleSubmit(event, this.onCloseModal())
-
               }/>
           </div>
         </MuiThemeProvider>

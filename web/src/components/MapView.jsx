@@ -12,8 +12,8 @@ class MapView extends Component {
     clinics: this.props.clinics,
     wait: "",
     viewport: {
-      width: 986.5,
-      height: 735,
+      width: 800,
+      height: 680,
       latitude: 49.2823762,
       longitude: -123.1090515,
       zoom: 14
@@ -38,7 +38,7 @@ class MapView extends Component {
 
           {this.state.clinics.map(clinic => {
             return (
-              <Marker key={clinic.id} latitude={clinic.coordinates.latitude} longitude={clinic.coordinates.longitude} offsetLeft={-20} offsetTop={-10} openModal={() => this.onListItemClick(clinic)} item={clinic} >
+              <Marker key={clinic.id} latitude={clinic.coordinates.lat} longitude={clinic.coordinates.long} offsetLeft={-20} offsetTop={-10} openModal={() => this.onListItemClick(clinic)} item={clinic} >
 
               <div
                 className="time-card"

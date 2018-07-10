@@ -4,8 +4,9 @@ html, body {
 }
 
 .loading-background {
+  opacity: 0.7;
   min-height: 100%;
-  background-color: #ECE4D1;
+  background-color: #69AFBA;
   top: 0;
   left: 0;
   bottom: 0;
@@ -40,12 +41,12 @@ html, body {
 }
 
 .loading-text {
-  color: #65B4CF;
+  color: #fff;
   font-size: 60px;
   font-family: 'Cookie', cursive;
   display: flex;
   justify-content: center;
-  transform: rotate(-1deg);
-  text-shadow: 8px 5px 8px #fd8904;
+  /*transform: rotate(-1deg);*/
+  text-shadow: 8px 5px 8px #000;
 }
 

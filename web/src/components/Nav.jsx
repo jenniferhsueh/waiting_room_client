@@ -15,17 +15,8 @@ class Nav extends Component {
     this.props.waitTime(waitTime)
   }
 
-  getCurrentUser = (user) => {
-    this.setState({
-      user
-    })
-    return user
-  }
-
   logoutUser = (user) => {
-    if (user === this.state.user) {
-      this.state.user = ""
-    }
+    this.props.getCurrentUser(null)
   }
 
   render() {
@@ -36,13 +27,14 @@ class Nav extends Component {
           <img width="20" src={logo} alt="clock-logo"/>
           <h1 className="text-logo">Waiting Room</h1>
           <div className="nav-right">
-            { this.state.user ? <div className="item">Hello, { this.state.user.first_name }</div> : ""}
-            { this.state.user && this.state.user.clinic_id ? <MyClinic open={ open } waitMinutes={ this.currentWaitTime } clinic={ this.props.clinic } currentUser={ this.props.currentUser }/> : ""}
-            <div className="item">For Patients</div>
-            <div className="item">For Clinics</div>
-            { this.state.user ? "" : <RegisterModal open={ open }/> }
-            { this.state.user ? "" : <LoginModal currentUser={ this.props.currentUser } getCurrentUser={ this.getCurrentUser } /> }
-            { !this.state.user ? "" : <div className="item" onClick={ () => this.logoutUser(this.state.user) } >Logout</div> }
+            { console.log('this.props.currentUser from nav.js =====> ', this.props.currentUser)}
+            { this.props.currentUser ? <div className="user-name">Hello, { this.props.currentUser.first_name }</div> : ""}
+            { this.props.currentUser ? <MyClinic open={ open } waitMinutes={ this.currentWaitTime } clinic={ this.props.clinic } currentUser={ this.props.currentUser }/> : ""}
+            { this.props.currentUser ? "" : <div className="item">For Patients</div> }
+            { this.props.currentUser ? "" : <div className="item">For Clinics</div> }
+            { this.props.currentUser ? "" : <RegisterModal open={ open }/> }
+            { this.props.currentUser ? "" : <LoginModal currentUser={ this.props.currentUser } getCurrentUser={ this.props.getCurrentUser } /> }
+            { !this.props.currentUser ? "" : <div className="item" onClick={ () => this.logoutUser(this.state.user) } >Logout</div> }
           </div>
         </div>
       </div>

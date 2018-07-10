@@ -11,14 +11,8 @@ class App extends Component {
 
   state = {
     loading: true,
-    currentUser: {
-      id: "7HrLNyrswDEFppuwn67aUg",
-      location: {
-        latitude: 0,
-        longitude: 0
-      }
-    },
-    clinics: [],
+    currentUser: null,
+    clinics: []
   };
 
   getWaitTime = (waitTime) => {
@@ -31,56 +25,70 @@ class App extends Component {
   }
 
   componentDidMount() {
-
-    fetch('/businesses')
-    .then(results => {
-      return results.json();
-    }).then(data => {
-      const clinics = []
-      data.businesses.map(clinic => {
-        let clinicDetails = {
-          id: clinic.id,
-          name: clinic.name,
-          location: clinic.location,
-          coordinates: clinic.coordinates,
-          wait_time: (Math.floor(Math.random() * 60))
-        }
-        clinics.push(clinicDetails)
+    if(this.state.clinics.length) {
+    } else {
+      fetch('/businesses')
+      .then(results => {
+        return results.json();
+      }).then(data => {
+        const clinics = []
+        data.businesses.map(clinic => {
+          let clinicDetails = {
+            id: clinic.id,
+            name: clinic.name,
+            location: clinic.location,
+            coordinates: clinic.coordinates,
+            wait_time: (Math.floor(Math.random() * 60))
+          }
+          clinics.push(clinicDetails)
+        })
+        this.setState({ clinics })
       })
-      this.setState({ clinics })
-    })
+    }
+
     setTimeout(() => this.setState({
       loading: false
     }),1200);
   }
 
+  getCurrentUser = (user) => {
+    if(user) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const coordinates = {
+          lat: position.coords.latitude,
+          long: position.coords.longitude
+        }
+        this.setState((prevState) => {
+          return {
+            currentUser: {
+              ...prevState.currentUser,
+              coordinates
+            }
+          }
+        });
+      });
+    }
+    this.setState({
+      currentUser: user
+    })
+  }
+
   render() {
     const { loading } = this.state
-
-    setTimeout(() =>
-      navigator.geolocation.getCurrentPosition((position) => {
-        const location = {...this.state.currentUser}
-        location.location.latitude = position.coords.latitude
-        location.location.longitude = position.coords.longitude
-        this.setState({location})
-    }),2000)
-
     if(loading){
      return (<LoadScreen />)
     } else {
       return (
       <div className="main-container">
-        <Nav waitTime={this.getWaitTime} clinic={ this.state.clinics } currentUser={ this.state.currentUser }/>
-        <FadeIn transitionDuration={2000}>
+        <Nav waitTime={ this.getWaitTime } clinic={ this.state.clinics } currentUser={ this.state.currentUser } getCurrentUser={ this.getCurrentUser }/>
+        <FadeIn transitionDuration={ 2000 }>
           <div className="body-container">
-            <ClinicList clinicList={this.state.clinics}/>
-            <MapBox clinics={this.state.clinics}/>
+            <ClinicList clinicList={ this.state.clinics }/>
+            <MapBox clinics={ this.state.clinics }/>
           </div>
         </FadeIn>
       </div>
-    )
-    }
-
+    )}
   }
 }
 
