@@ -8,9 +8,10 @@ class MapBox extends Component {
 
 
   render() {
+    { console.log('this.props.clinic from MapBox.js =====>',this.props.clinics)}
     return (
       <div className="map-container">
-        { this.props.openClinicView ? (<ClinicPortal waitMinutes={ this.props.waitTime } clinic={ this.props.clinic } currentUser={ this.props.currentUser }/>) : (<MapView clinics={this.props.clinics}/>) }
+        { this.props.openClinicView ? (<ClinicPortal waitMinutes={ this.props.waitTime } clinics={ this.props.clinics } currentUser={ this.props.currentUser }/>) : (<MapView clinics={this.props.clinics}/>) }
       </div>
     )
   }

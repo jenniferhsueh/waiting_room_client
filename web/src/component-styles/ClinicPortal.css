@@ -1,11 +1,37 @@
 .clinic-portal {
-  display: grid;
   width: 50%;
   height: 100vh;
   border-right: 4px solid black;
+
 }
 
-.clinic-portal h1 {
+.clinic-portal .title {
   display: flex;
+  font-size: 36px;
+  padding-bottom: 38px;
   justify-content: space-around;
+  border-bottom: 1px solid black;
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 4px 2px -2px gray;
 }
+
+.clinic-portal .set-time {
+  font-size: 26px;
+  padding-top: 48px;
+  display: grid;
+  justify-content: center;
+}
+
+.clinic-portal .number-selector {
+  margin-top: 48px;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.clinic-portal .update-button {
+  border-radius: 5px;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 46px;
+  box-shadow: 0 4px 2px -2px gray;
+}
+

@@ -88,6 +88,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('this.state.clinics from app.js =====>',this.state.clinics)
     const { loading } = this.state
     if(loading){
      return (<LoadScreen />)

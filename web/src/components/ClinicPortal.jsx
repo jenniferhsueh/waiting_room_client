@@ -25,7 +25,7 @@ class ClinicPortal extends Component {
 
   getClinicNameForCurrentUser = () => {
     let clinName;
-    this.props.clinic.map((clinic, index) => {
+    this.props.clinics.map((clinic, index) => {
       if (clinic.id === this.props.currentUser.id) {
         clinName = clinic.name
       }
@@ -36,7 +36,8 @@ class ClinicPortal extends Component {
   render() {
     return (
       <div className="clinic-portal">
-      <h1>Set Wait Time for {/*{ this.getClinicNameForCurrentUser() }*/}</h1>
+        <div className="title">{ this.getClinicNameForCurrentUser() }</div>
+        <div className="set-time">Set current wait time:</div>
         <input className="number-selector"
           autoFocus={true}
           type="number"
