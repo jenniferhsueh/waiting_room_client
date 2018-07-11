@@ -48,7 +48,11 @@ class MyClinic extends Component {
   render() {
     const { open } = this.state;
     return (
-      <div>
+      <div className="clinic-portal">
+        <div className="nothing">
+        <div className="something"> something </div>
+
+        </div>
         <div className="item" onClick={ this.onOpenModal }>
           My Clinic
         </div>

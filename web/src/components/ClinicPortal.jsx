@@ -48,6 +48,8 @@ class ClinicPortal extends Component {
     const { open } = this.state;
     return (
       <div className="clinic-portal">
+
+      <div className="clinic-update">
         <div className="title">{ this.getClinicNameForCurrentUser() }</div>
         <div className="set-time">Set current wait time:</div>
         <input className="number-selector"
@@ -72,6 +74,10 @@ class ClinicPortal extends Component {
           center>
           <div>Thank you. The wait time for { this.getClinicNameForCurrentUser() } has been set to { this.state.minutes } mins</div>
           </Modal>
+      </div>
+
+      <div className="patient-list">test from patient list</div>
+
       </div>
     )
   }

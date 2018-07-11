@@ -1,11 +1,15 @@
 .clinic-portal {
-  width: 50%;
+  /*display: block;*/
+  width: 66.6%;
+}
+
+.clinic-update {
   height: 100vh;
   border-right: 4px solid black;
 
 }
 
-.clinic-portal .title {
+.clinic-update .title {
   display: flex;
   font-size: 36px;
   padding-bottom: 38px;
@@ -15,23 +19,27 @@
   box-shadow: 0 4px 2px -2px gray;
 }
 
-.clinic-portal .set-time {
+.clinic-update .set-time {
   font-size: 26px;
   padding-top: 48px;
   display: grid;
   justify-content: center;
 }
 
-.clinic-portal .number-selector {
+.clinic-update .number-selector {
   margin-top: 48px;
   box-shadow: 0 4px 2px -2px gray;
 }
 
-.clinic-portal .update-button {
+.clinic-update .update-button {
   border-radius: 5px;
   width: 50%;
   margin-left: 25%;
   margin-top: 46px;
   box-shadow: 0 4px 2px -2px gray;
+}
+
+.patient-list {
+  float:right;
 }
 

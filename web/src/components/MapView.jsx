@@ -12,7 +12,7 @@ class MapView extends Component {
     clinics: this.props.clinics,
     wait: "",
     viewport: {
-      width: 800,
+      width: 858,
       height: 680,
       latitude: 49.2823762,
       longitude: -123.1090515,
