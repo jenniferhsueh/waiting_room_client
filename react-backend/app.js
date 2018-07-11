@@ -67,7 +67,9 @@ app.get('/businesses', (req, res) => {
             coordinates: {
               latitude: clinic.coordinates.latitude,
               longitude: clinic.coordinates.longitude
-            }
+            },
+            created_at: new Date(),
+            updated_at: new Date()
           }));
 
           console.log('results from app.js =====>', results)
