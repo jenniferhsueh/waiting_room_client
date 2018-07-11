@@ -11,7 +11,6 @@ const getClinics = userLocation => {
     .get('/businesses/')
     .then(res =>
       res.data.businesses.map(business => {
-        console.log("business.coordinates from from yelp.js =>", business.coordinates)
         return {
           id: business.id,
           name: business.name,
