@@ -29,7 +29,7 @@ export default class App extends React.Component {
     clinics: [],
     modalVisible: false,
     currentUser: {
-      clinic_id: "7HrLNyrswDEFppuwn67aUg",
+      clinic_id: "3",
       clinic_name: "Aquarius Medical Clinic"
     }
   }

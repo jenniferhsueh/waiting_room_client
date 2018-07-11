@@ -10,7 +10,7 @@ import MapBox from './components/MapBox';
 class App extends Component {
 
   state = {
-    loading: true,
+    loading: false,
     currentUser: null,
     clinics: [],
     openClinicView: false
@@ -47,9 +47,9 @@ class App extends Component {
       })
     }
 
-    setTimeout(() => this.setState({
-      loading: false
-    }),1200);
+    // setTimeout(() => this.setState({
+    //   loading: false
+    // }),1200);
   }
 
   getCurrentUser = (user) => {

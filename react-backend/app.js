@@ -34,8 +34,9 @@ app.get('/businesses', (req, res) => {
 
   knex('clinics').select('*')
     .then((results) => {
-      console.log('results from app.js =====>', results)
-      if (results.length > 0) {
+      
+      if (results.length > 2) {
+        console.log('clinics from app.js =====>', results)
         res.json({businesses: results});
       } else {
         request({
@@ -64,10 +65,15 @@ app.get('/businesses', (req, res) => {
               country: clinic.location.country,
             },
             coordinates: {
-              lat: clinic.coordinates.latitude,
-              long: clinic.coordinates.longitude
-            }
+              latitude: clinic.coordinates.latitude,
+              longitude: clinic.coordinates.longitude
+            },
+            created_at: new Date(),
+            updated_at: new Date()
           }));
+
+          console.log('results from app.js =====>', results)
+
           knex('clinics')
             .insert(clinics)
             .returning('*')
