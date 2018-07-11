@@ -52,7 +52,8 @@ app.get('/businesses', (req, res) => {
           }
           let clinics = JSON.parse(body).businesses.map(clinic => ({
             name: clinic.name,
-            phone: clinic.phone,
+            phone: clinic.display_phone,
+            website: clinic.url,
             hours: clinic.hours,
             avg_wait_time: (Math.floor(Math.random() * 60)),
             location: {
