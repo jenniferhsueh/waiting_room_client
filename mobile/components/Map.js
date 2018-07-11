@@ -1,10 +1,18 @@
 import React, { Component } from "react"
-import { StyleSheet, View, Button, Text } from "react-native"
+import { StyleSheet, View, Button, Text, Alert } from "react-native"
 import { MapView } from "expo"
 
 const Marker = MapView.Marker
 
+
+
+
 export default class Map extends Component {
+
+  regNotification(){
+    Alert.alert('Thanks for registering')
+  } 
+
   renderMarkers() {
     return this.props.places.map((place, i) => (
 
@@ -12,7 +20,7 @@ export default class Map extends Component {
       <MapView.Callout>
     <View style={styles.callout}>
       <Text >{`${place.wait_time} Mins - ${place.name}`} </Text>
-      <Button title={`Get in line`} onPress={() => console.log('Clicked')} />
+      <Button title={`Get in line`} onPress={() => this.regNotification()} />
     </View>
   </MapView.Callout>
       </Marker>
