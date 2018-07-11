@@ -27,7 +27,9 @@ exports.seed = function(knex, Promise) {
           coordinates: {
             latitude: "49.286494",
             longitude: "-123.121436"
-          }
+          },
+          created_at: new Date(),
+          updated_at: new Date()
         },
         {
           name: "Ultima Medicentre",
@@ -55,7 +57,9 @@ exports.seed = function(knex, Promise) {
           coordinates: {
             lat: "49.285391",
             long: "-123.121550"
-          }
+          },
+          created_at: new Date(),
+          updated_at: new Date()
         }
       ]);
     });
