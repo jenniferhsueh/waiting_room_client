@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
+import Modal from 'react-responsive-modal';
 import '../component-styles/ClinicPortal.css';
 
 class ClinicPortal extends Component {
 
   state = {
+    open: false,
     minutes: '',
     clinicName: ''
   }
+
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
 
   handleChange = (e) => {
     e.preventDefault();
@@ -21,6 +31,7 @@ class ClinicPortal extends Component {
 
   onButtonClick = (mins) => {
     this.props.waitMinutes(mins)
+    this.onOpenModal()
   };
 
   getClinicNameForCurrentUser = () => {
@@ -34,6 +45,7 @@ class ClinicPortal extends Component {
   }
 
   render() {
+    const { open } = this.state;
     return (
       <div className="clinic-portal">
         <div className="title">{ this.getClinicNameForCurrentUser() }</div>
@@ -54,6 +66,12 @@ class ClinicPortal extends Component {
           onClick={() => this.onButtonClick(this.state.minutes) }>
           Update
         </button>
+        <Modal
+          className="my-clinic"
+          open={open} onClose={ this.onCloseModal }
+          center>
+          <div>Thank you. The wait time for { this.getClinicNameForCurrentUser() } has been set to { this.state.minutes } mins</div>
+          </Modal>
       </div>
     )
   }
