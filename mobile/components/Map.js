@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { StyleSheet } from "react-native"
+import { StyleSheet, View, Button, Text } from "react-native"
 import { MapView } from "expo"
 
 const Marker = MapView.Marker
@@ -7,7 +7,17 @@ const Marker = MapView.Marker
 export default class Map extends Component {
   renderMarkers() {
     return this.props.places.map((place, i) => (
-      <Marker key={i} title={`${place.wait_time} Mins - ${place.name} `} coordinate={place.coords} />
+
+      <Marker key={i} coordinate={place.coords}> 
+      <MapView.Callout>
+    <View style={styles.callout}>
+      <Text >{`${place.wait_time} Mins - ${place.name}`} </Text>
+      <Button title={`Get in line`} onPress={() => console.log('Clicked')} />
+    </View>
+  </MapView.Callout>
+      </Marker>
+
+
     ))
   }
   

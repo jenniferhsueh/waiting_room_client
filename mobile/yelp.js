@@ -11,13 +11,14 @@ const getClinics = userLocation => {
     .get('/businesses/')
     .then(res =>
       res.data.businesses.map(business => {
+        // console.log("businesses from yelp.js", business)
         return {
           id: business.id,
           name: business.name,
           location: business.location,
           coords: business.coordinates,
-          phone: business.display_phone,
-          website: business.url,
+          phone: business.phone,
+          website: business.website,
           wait_time: (Math.floor(Math.random() * 60))
 
         }
