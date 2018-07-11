@@ -4,6 +4,7 @@ import logo from '../assets/clock-logo.svg';
 import RegisterModal from '../components/RegisterModal'
 import LoginModal from '../components/LoginModal'
 import MyClinic from '../components/MyClinic'
+import ClinicPortal from '../components/ClinicPortal'
 import '../component-styles/nav.css';
 
 class Nav extends Component {
@@ -19,6 +20,23 @@ class Nav extends Component {
     this.props.getCurrentUser(null)
   }
 
+  toggleView = () => {
+    if(!this.props.currentUser) {
+
+    } else {
+
+    }
+    if (this.props.currentUser && this.props.currentUser.clinics_id) {
+      if (this.props.openClinicView) {
+        return (<div className="item" onClick={ this.props.toggleClinic }>Map</div>)
+      } else {
+        return (<div className="item" onClick={ this.props.toggleClinic } >My Clinic</div>)
+      }
+    } else {
+      return ""
+    }
+  }
+
   render() {
     const { open } = this.state;
     return (
@@ -27,9 +45,9 @@ class Nav extends Component {
           <img width="20" src={logo} alt="clock-logo"/>
           <h1 className="text-logo">Waiting Room</h1>
           <div className="nav-right">
-            { console.log('this.props.currentUser from nav.js =====> ', this.props.currentUser)}
             { this.props.currentUser ? <div className="user-name">Hello, { this.props.currentUser.first_name }</div> : ""}
-            { this.props.currentUser ? <MyClinic open={ open } waitMinutes={ this.currentWaitTime } clinic={ this.props.clinic } currentUser={ this.props.currentUser }/> : ""}
+            { this.toggleView() }
+            {/*{ this.props.currentUser && this.props.currentUser.clinics_id ? (this.props.openClinicView ? (<div className="item" onClick={ this.props.toggleClinic }>Map</div>) : (<div className="item" onClick={ this.props.toggleClinic } >My Clinic</div>)) : ""}*/}
             { this.props.currentUser ? "" : <div className="item">For Patients</div> }
             { this.props.currentUser ? "" : <div className="item">For Clinics</div> }
             { this.props.currentUser ? "" : <RegisterModal open={ open }/> }
@@ -44,5 +62,3 @@ class Nav extends Component {
 
 
 export default Nav;
-
-

@@ -9,12 +9,18 @@ import TextField from 'material-ui/TextField';
 import '../component-styles/LoginModal.css';
 
 class LoginModal extends Component {
+
   state = {
     currentUser: {},
     open: false,
     email: "",
     pw: ""
   };
+
+  onLogin = (event, close) => {
+    this.handleSubmit(event)
+    this.onCloseModal()
+  }
 
   validateForm() {
     return this.state.email.length > 0 && this.state.password.length > 0;
@@ -29,6 +35,7 @@ class LoginModal extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.sendLoginData();
+    console.log('handleSubmit from login modal ====>', )
   }
 
   onOpenModal = () => {
@@ -95,9 +102,7 @@ class LoginModal extends Component {
               style={{
                 marginLeft:75
               }}
-              onClick={(event, close) =>
-                this.handleSubmit(event, this.onCloseModal())
-              }/>
+              onClick={ this.onLogin }/>
           </div>
         </MuiThemeProvider>
         </Modal>

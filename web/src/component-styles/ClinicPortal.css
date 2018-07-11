@@ -1,0 +1,6 @@
+.clinic-portal {
+  display: grid;
+  width: 50%;
+  height: 100vh;
+  border-right: 4px solid black;
+}

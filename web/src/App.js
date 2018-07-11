@@ -12,7 +12,8 @@ class App extends Component {
   state = {
     loading: true,
     currentUser: null,
-    clinics: []
+    clinics: [],
+    openClinicView: false
   };
 
   getWaitTime = (waitTime) => {
@@ -58,6 +59,7 @@ class App extends Component {
           lat: position.coords.latitude,
           long: position.coords.longitude
         }
+        console.log('users not empty')
         this.setState((prevState) => {
           return {
             currentUser: {
@@ -67,9 +69,21 @@ class App extends Component {
           }
         });
       });
-    }
-    this.setState({
+      this.setState({
       currentUser: user
+      })
+    } else {
+      console.log('setting users to empty')
+      this.setState({
+        currentUser: null,
+        openClinicView: false
+      })
+    }
+  }
+
+  toggleClinic = () => {
+    this.setState({
+      openClinicView: !this.state.openClinicView
     })
   }
 
@@ -80,11 +94,11 @@ class App extends Component {
     } else {
       return (
       <div className="main-container">
-        <Nav waitTime={ this.getWaitTime } clinic={ this.state.clinics } currentUser={ this.state.currentUser } getCurrentUser={ this.getCurrentUser }/>
+        <Nav openClinicView={ this.state.openClinicView } toggleClinic={ this.toggleClinic } waitTime={ this.getWaitTime } clinic={ this.state.clinics } currentUser={ this.state.currentUser } getCurrentUser={ this.getCurrentUser }/>
         <FadeIn transitionDuration={ 2000 }>
           <div className="body-container">
             <ClinicList clinicList={ this.state.clinics }/>
-            <MapBox clinics={ this.state.clinics }/>
+            <MapBox openClinicView={ this.state.openClinicView } clinics={ this.state.clinics } currentUser={ this.state.currentUser } waitTime={ this.getWaitTime }/>
           </div>
         </FadeIn>
       </div>
