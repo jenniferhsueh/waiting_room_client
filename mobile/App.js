@@ -31,7 +31,14 @@ export default class App extends React.Component {
     currentUser: {
       clinic_id: "3",
       clinic_name: "Aquarius Medical Clinic"
-    }
+    },
+    displayName: ""
+  }
+
+  displayName = (displayName) => {
+    this.setState(() => {displayName})
+    console.log("Display from app.js ",this.state.displayName)
+    return this.state.displayName
   }
 
   getWaitTime = (waitTime) => {
@@ -87,12 +94,12 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { region, clinics, mapView, menuView } = this.state;
+    const { region, clinics, mapView, menuView, displayName } = this.state;
 
     return (
       <SafeAreaView style={styles.appContainer}>
-        <Navbar toggleMenu={this.toggleMenu} />
-        { menuView ? <Navmenu toggleMenu={this.toggleMenu} clinics={clinics} waitMinutes={this.getWaitTime} currentUser={this.state.currentUser}/> : ""}
+        <Navbar displayName={displayName} toggleMenu={this.toggleMenu} />
+        { menuView ? <Navmenu displayName={this.displayName} toggleMenu={this.toggleMenu} clinics={clinics} waitMinutes={this.getWaitTime} currentUser={this.state.currentUser}/> : ""}
         <NavButtons toggleView={this.toggleView}/>
         { mapView ? <Map region={region} places={clinics} /> : <ListEntry places={clinics} />  }
       </SafeAreaView>

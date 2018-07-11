@@ -10,11 +10,11 @@ export default class Navbar extends Component {
   render() {
     return (
       <View style={styles.container}>
+          {console.log("(Navbar)Display Name from APP.js =>",this.props)}
         <Header
-          centerComponent={{ text: "Waiting Room", style: { color: "#fff" } }}
+          centerComponent={{ text:`${this.props.displayName}` || "Waiting Room", style: { color: "#fff" } }}
           rightComponent={{ icon: "menu", color: "#fff", onPress: () => this.props.toggleMenu() }}
         />
-
       </View>
     );
   }

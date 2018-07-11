@@ -10,7 +10,7 @@ const Marker = MapView.Marker
 export default class Map extends Component {
 
   regNotification(){
-    Alert.alert('Thanks for registering')
+    Alert.alert('Your appointment has been booked!')
   } 
 
   renderMarkers() {

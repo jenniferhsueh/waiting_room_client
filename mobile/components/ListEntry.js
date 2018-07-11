@@ -19,7 +19,6 @@ export default class ListEntry extends Component {
                   <Text>{place.phone}</Text>
                   <Text>{place.location.address1}</Text>
                   <Text onPress={() => Linking.openURL(place.website)} style={{color: "blue"}} >See Reviews</Text>
-                  <Button title="get in line" />
                 </View>
               }
               rightTitle={
@@ -28,9 +27,12 @@ export default class ListEntry extends Component {
               rightTitleStyle={{color: "black", fontSize: 20}}
               rightTitleNumberOfLines={ 2 }
               
+              
               containerStyle={{height: 100}}
               subtitleContainerStyle={{height: 60, paddingLeft: 10 }}
-            />
+              >
+              <Button title="get in line" />
+            </ListItem>
           ))
         }
         </ScrollView>

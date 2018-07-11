@@ -11,6 +11,7 @@ var yelpToken = process.env.YELP_API_KEY;
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var clinicsRouter = require('./routes/getClinics');
+var visitsRouter = require('./routes/visitsRouter');
 
 var app               = express();
 
@@ -30,6 +31,7 @@ const knex = require('knex')(knexConfig);
 app.use('/api/clinics', clinicsRouter)
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter(knex));
+app.use('/api/visits', visitsRouter(knex))
 app.get('/businesses', (req, res) => {
 
   knex('clinics').select('*')
