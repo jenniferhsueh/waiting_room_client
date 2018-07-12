@@ -52,8 +52,8 @@ class App extends Component {
     if(user) {
       navigator.geolocation.getCurrentPosition((position) => {
         const coordinates = {
-          lat: position.coords.latitude,
-          long: position.coords.longitude
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
         }
         console.log('users not empty')
         this.setState((prevState) => {
