@@ -72,20 +72,12 @@ export default class Navmenu extends Component {
             transparent={false}
             visible={this.state.modalVisible}
           >
-            <View style={{marginTop: 22, backgroundColor: "pink", padding: 10}}>
+            <View style={{marginTop: 22, backgroundColor: "#fff", padding: 10}}>
               <View>
                 {this.handleModalView(this.state.modalView)}
               </View>
             </View>
           </Modal>
-          <ListItem 
-            onPress={() => {
-              this.setModalView("WaitTime")
-              this.setModalVisible(!this.state.modalVisible) 
-            }} 
-            key="1" title="My Clinic" titleStyle={styles.text} 
-            subtitle="Set Wait Time" subtitleStyle={styles.subtitle}
-          />
           <ListItem
             onPress={() => {
               this.setModalView("Register")
@@ -99,8 +91,6 @@ export default class Navmenu extends Component {
               this.setModalVisible(!this.state.modalVisible) 
             }}
             key="3" title="Login"titleStyle={styles.text} />
-          <ListItem key="4" title="Patients" titleStyle={styles.text} subtitle="Get Deets" subtitleStyle={styles.subtitle}/>
-          <ListItem key="5" title="Clinics" titleStyle={styles.text} subtitle="Get Deets" subtitleStyle={styles.subtitle}/>
         </View>
       </Card>
     );

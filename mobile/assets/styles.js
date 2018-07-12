@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     width: "100%",
     padding: 0,
     margin: 0,
-    backgroundColor: "#476DC5"
+    backgroundColor: "#478bb5"
   },
   text: {
     color: "white"
@@ -21,12 +21,8 @@ export const styles = StyleSheet.create({
   button: {
     width: "60%",
     alignSelf: "center",
-    margin: 15
-  },
-  input: {
-    height: 50,
-    borderBottomWidth: 2,
-    borderBottomColor: "#2196F3"
+    margin: 15,
+    backgroundColor: "#478bb5"
   },
   regContainer: {
     flex: 1,

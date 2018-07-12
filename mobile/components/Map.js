@@ -17,12 +17,12 @@ export default class Map extends Component {
     return this.props.places.map((place, i) => (
 
       <Marker key={i} coordinate={place.coords}> 
-      <MapView.Callout>
-    <View style={styles.callout}>
-      <Text >{`${place.wait_time} Mins - ${place.name}`} </Text>
-      <Button title={`Get in line`} onPress={() => this.regNotification()} />
-    </View>
-  </MapView.Callout>
+        <MapView.Callout>
+          <View style={styles.callout}>
+            <Text >{`${place.wait_time} Mins - ${place.name}`} </Text>
+            { this.props.displayName ? <Button title={`Get in line`} onPress={() => this.regNotification()} /> : null}
+          </View>
+        </MapView.Callout>
       </Marker>
 
 

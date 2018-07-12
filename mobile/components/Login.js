@@ -1,15 +1,15 @@
 import React, { Component } from "react"
 import { View } from "react-native"
-import { Text, Button, FormInput, overlay } from "react-native-elements"
+import { Text, Button, FormInput } from "react-native-elements"
 import { styles } from "../assets/styles"
 
 import { Auth } from "aws-amplify"
 
 export default class Login extends Component {
   state = {
-    username: '',
-    password: '',
-    confirmationCode: '',
+    username: "",
+    password: "",
+    confirmationCode: "",
     user: {}
   }
 
@@ -26,7 +26,7 @@ export default class Login extends Component {
         this.setState({ user })
       })
       .catch(err => {
-        console.log('error signing in: ', err)
+        console.log("error signing in: ", err)
       })
   }r
 
@@ -34,9 +34,9 @@ export default class Login extends Component {
     const { user, confirmationCode } = this.state
     Auth.confirmSignIn(user, confirmationCode)
       .then(user => {
-        console.log('user: ', user)
+        console.log("user: ", user)
       }).catch(err => {
-        console.log('error confirming login: ', err)
+        console.log("error confirming login: ", err)
       })
   }
 
@@ -49,26 +49,24 @@ export default class Login extends Component {
           Welcome back,{"\n"}Please login to continue
         </Text>
         <FormInput
-          onChangeText={value => this.onChangeText('username', value)}
-          style={styles.input}
           autoFocus={true}
-          keyboardType="email-address"
           placeholder="Email"
+          keyboardType="email-address"
           returnKeyType="next"
+          onChangeText={value => this.onChangeText("username", value)}
           onSubmitEditing={() => this.passwordInput.focus()}
         />
         <FormInput
-          onChangeText={value => this.onChangeText('password', value)}
-          style={styles.input}
-          placeholder="Password"
           secureTextEntry={true}
+          placeholder="Password"
           returnKeyType="done"
+          onChangeText={value => this.onChangeText("password", value)}
           ref={(input) => this.passwordInput = input}
         />
         <Button 
           buttonStyle={styles.button}
           raised
-          title='Login'
+          title="Login"
           onPress={() => {
             this.signIn();
           }}>
@@ -77,7 +75,7 @@ export default class Login extends Component {
           onChangeText={value => this.onChangeText('confirmationCode', value)}
           style={styles.input}
           keyboardType="numeric"
-          placeholder='Confirmation Code'
+          placeholder="Confirmation Code"
         />
         <Button 
           buttonStyle={styles.button}
