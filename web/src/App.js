@@ -10,7 +10,7 @@ import MapBox from './components/MapBox';
 class App extends Component {
 
   state = {
-    loading: false,
+    loading: true,
     currentUser: null,
     clinics: [],
     openClinicView: false
@@ -32,24 +32,20 @@ class App extends Component {
       .then(results => {
         return results.json();
       }).then(data => {
-        const clinics = []
-        data.businesses.map(clinic => {
-          let clinicDetails = {
-            id: clinic.id,
-            name: clinic.name,
-            location: clinic.location,
-            coordinates: clinic.coordinates,
-            wait_time: (Math.floor(Math.random() * 60))
-          }
-          clinics.push(clinicDetails)
-        })
+        const clinics = data.businesses.map(clinic => ({
+                    id: clinic.id,
+                    name: clinic.name,
+                    location: clinic.location,
+                    coordinates: clinic.coordinates,
+                    wait_time: (Math.floor(Math.random() * 60))
+                  }))
+        console.log('this.state.clinics from App.js =======> ', clinics)
         this.setState({ clinics })
       })
     }
-
-    // setTimeout(() => this.setState({
-    //   loading: false
-    // }),1200);
+    setTimeout(() => this.setState({
+      loading: false
+    }),1000);
   }
 
   getCurrentUser = (user) => {
@@ -98,7 +94,7 @@ class App extends Component {
         <Nav openClinicView={ this.state.openClinicView } toggleClinic={ this.toggleClinic } waitTime={ this.getWaitTime } clinic={ this.state.clinics } currentUser={ this.state.currentUser } getCurrentUser={ this.getCurrentUser }/>
         <FadeIn transitionDuration={ 2000 }>
           <div className="body-container">
-            <ClinicList clinicList={ this.state.clinics }/>
+            <ClinicList clinicList={ this.state.clinics } currentUser={ this.state.currentUser }/>
             <MapBox openClinicView={ this.state.openClinicView } clinics={ this.state.clinics } currentUser={ this.state.currentUser } waitTime={ this.getWaitTime }/>
           </div>
         </FadeIn>

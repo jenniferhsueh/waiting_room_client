@@ -3,12 +3,16 @@
   border-right: 1px solid black;
   border-bottom-right-radius: 5px;
   margin-bottom: 3px;
+  background-color: rgb(56,128,165, 0.1);
   box-shadow: 0 4px 2px -2px gray;
 
 }
 
 .list-item:hover {
-  background-color: #7ABDC7;
+  background-color: rgb(253,155,39, 0.3);
+  border-bottom: 3px solid #3880A5;
+  border-right: 3px solid #3880A5;
+  border-bottom-right-radius: 5px;
 }
 
 .name-placeholder {
@@ -35,4 +39,8 @@
   font-family: 'Montserrat', sans-serif;
   padding: 10px;
   margin-left: 31px;
+}
+
+.unique-list-item {
+  background: rgb(206,45,57, 0.3);
 }

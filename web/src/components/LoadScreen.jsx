@@ -15,7 +15,7 @@ class Loading extends Component {
           <div className="loading">
             <img className="loading-graphic" width="20" src={logo} alt="clock-logo"/>
           </div>
-          <h1 className="loading-text">Loading...</h1>
+          {/*<h1 className="loading-text">Loading...</h1>*/}
         </FadeIn>
       </div>
     )

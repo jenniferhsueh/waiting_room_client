@@ -37,16 +37,28 @@ class Nav extends Component {
     }
   }
 
+  getClinicNameForCurrentUser = () => {
+    let clinName;
+    this.props.clinic.map((clinic, index) => {
+      if (clinic.id === this.props.currentUser.id) {
+        clinName = clinic.name
+      }
+    })
+    return clinName
+  }
+
   render() {
     const { open } = this.state;
+    console.log('this.props from nav', this.props)
     return (
       <div className="App">
         <div className="nav">
           <img width="20" src={logo} alt="clock-logo"/>
           <h1 className="text-logo">Waiting Room</h1>
           <div className="nav-right">
-            { this.props.currentUser ? <div className="user-name">Hello, { this.props.currentUser.first_name }</div> : ""}
-            { this.toggleView() }
+            { this.props.currentUser ? <div className="user-name">Hello, { this.props.currentUser.first_name } (admin for { this.getClinicNameForCurrentUser() })</div> : ""}
+            {/*{ this.toggleView() }*/}
+            { this.props.currentUser && this.props.currentUser.clinics_id ? <MyClinic waitMinutes={ this.currentWaitTime } clinic={ this.props.clinic } currentUser={ this.props.currentUser}  /> : "" }
             {/*{ this.props.currentUser && this.props.currentUser.clinics_id ? (this.props.openClinicView ? (<div className="item" onClick={ this.props.toggleClinic }>Map</div>) : (<div className="item" onClick={ this.props.toggleClinic } >My Clinic</div>)) : ""}*/}
             { this.props.currentUser ? "" : <div className="item">For Patients</div> }
             { this.props.currentUser ? "" : <div className="item">For Clinics</div> }

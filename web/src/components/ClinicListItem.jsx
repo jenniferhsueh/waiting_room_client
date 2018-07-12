@@ -3,9 +3,23 @@ import '../component-styles/ListItem.css';
 
 class ClinicListItem extends Component {
 
+  checkUserClinic(clinicId){
+    let flag = false;
+    if(this.props.currentUser){
+      for(var i = 0; i < this.props.clinic.length; i++){
+        if(clinicId === this.props.currentUser.clinics_id){
+          flag = true;
+          break;
+        }
+      }
+    }
+    return flag;
+  }
+
+
   render() {
     return (
-      <div className="list-item" onClick={this.props.openModal}>
+      <div className={`${ this.checkUserClinic(this.props.item.id) ? 'unique-list-item' : 'list-item'}`} onClick={this.props.openModal}>
         <div className="name-placeholder">
           {this.props.item.name}
         </div>

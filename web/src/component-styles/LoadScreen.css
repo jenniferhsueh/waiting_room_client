@@ -6,7 +6,7 @@ html, body {
 .loading-background {
   opacity: 0.7;
   min-height: 100%;
-  background-color: #69AFBA;
+  background-color: rgba(46,120,164, 0.8);
   top: 0;
   left: 0;
   bottom: 0;
@@ -23,8 +23,8 @@ html, body {
 }
 
 .loading img {
-  margin-top: 15%;
-  width:20%;
+  margin-top: 20%;
+  width:4%;
   animation: App-logo-spin infinite 4000ms linear;
 }
 
