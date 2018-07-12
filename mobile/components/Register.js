@@ -22,9 +22,7 @@ export default class Register extends Component {
     })
   }
   
-  
   signUp() {
-    console.log("REGISTERINGGGGGGG ==============>");
     Auth.signUp({ 
       username: this.state.username,
       password: this.state.password,
@@ -41,7 +39,6 @@ export default class Register extends Component {
     })
   }
   confirmSignUp() {
-    console.log("CONFIRMATION REGISTRATION ==============>");
     Auth.confirmSignUp(this.state.username, this.state.confirmationCode)
     .then(res => {
       console.log('successful confirmation: ', res)
@@ -85,8 +82,8 @@ export default class Register extends Component {
           style={styles.input}
           placeholder="Phone Number"
           keyboardType="phone-pad" 
+          returnKeyType={"next"}
           name="phoneNumber" 
-          returnKeyType="next"
           onSubmitEditing={() => this.passwordInput.focus()}
           ref={(input) => this.phoneInput = input}
           />

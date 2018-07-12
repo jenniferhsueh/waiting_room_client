@@ -36,8 +36,7 @@ export default class App extends React.Component {
   }
 
   displayName = (displayName) => {
-    this.setState(() => {displayName})
-    console.log("Display from app.js ",this.state.displayName)
+    this.setState({displayName});
     return this.state.displayName
   }
 

@@ -20,7 +20,6 @@ export default class Login extends Component {
   }
 
   signIn() {
-    console.log("LOGGINNNNNNNNNNN ==============>");
     const { username, password } = this.state
     Auth.signIn(username, password)
       .then(user => {
@@ -32,7 +31,6 @@ export default class Login extends Component {
   }r
 
   confirmSignIn() {
-    console.log("CONFIRMATION LOGGING INNNNNNNN ==============>");
     const { user, confirmationCode } = this.state
     Auth.confirmSignIn(user, confirmationCode)
       .then(user => {
@@ -43,6 +41,8 @@ export default class Login extends Component {
   }
 
   render() {
+    console.log("userattributes Login.js", )
+
     return (
       <View Style={styles.regContainer}>
         <Text style={styles.formText}>
@@ -86,6 +86,7 @@ export default class Login extends Component {
             this.confirmSignIn();
             this.props.setModalVisible(false);
             this.props.toggleMenu();
+            this.props.displayName(this.state.username);
           }}/> 
         />
       </View>
