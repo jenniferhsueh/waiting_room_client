@@ -24,6 +24,7 @@ yarn-error.log*
 #awsmobilejs
 appsync-info.json
 aws-info.json
+aws-exports.js
 project-info.json
 aws-exports.*
 awsmobilejs/.awsmobile/backend-build
