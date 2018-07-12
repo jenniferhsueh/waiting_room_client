@@ -19,7 +19,7 @@ export default class SetWaitTime extends Component {
           selectionColor="black"
           onChangeText={ waitTime => this.props.handleChange(waitTime)}
         />
-        <Button 
+        <Button
           buttonStyle={styles.button}
           raised
           title='Update Wait Time'

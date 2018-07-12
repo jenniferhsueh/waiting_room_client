@@ -46,12 +46,14 @@ export default class Navmenu extends Component {
           clinic_name={this.props.currentUser.clinic_name}/>
         break;
       case "Register":
-        return currentModalView = <Register 
+        return currentModalView = <Register
+          displayName={this.props.displayName}  
           toggleMenu={this.props.toggleMenu} 
           setModalVisible={this.setModalVisible}/>
         break;
       case "Login":
-        return currentModalView = <Login 
+        return currentModalView = <Login
+          displayName={this.props.displayName} 
           toggleMenu={this.props.toggleMenu} 
           setModalVisible={this.setModalVisible}/>
         break;
@@ -70,34 +72,25 @@ export default class Navmenu extends Component {
             transparent={false}
             visible={this.state.modalVisible}
           >
-            <View style={{marginTop: 22, backgroundColor: "pink", padding: 10}}>
+            <View style={{marginTop: 22, backgroundColor: "#fff", padding: 10}}>
               <View>
                 {this.handleModalView(this.state.modalView)}
               </View>
             </View>
           </Modal>
-          <ListItem 
-            onPress={() => {
-              this.setModalView("WaitTime")
-              this.setModalVisible(!this.state.modalVisible) 
-            }} 
-            key="1" title="My Clinic" titleStyle={styles.text} 
-            subtitle="Set Wait Time" subtitleStyle={styles.subtitle}
-          />
-          <ListItem 
+          <ListItem
             onPress={() => {
               this.setModalView("Register")
               this.setModalVisible(!this.state.modalVisible) 
             }}
             key="2" title="Register" titleStyle={styles.text} />
-          <ListItem 
-             onPress={() => {
+          <ListItem
+              
+            onPress={() => {
               this.setModalView("Login")
               this.setModalVisible(!this.state.modalVisible) 
             }}
             key="3" title="Login"titleStyle={styles.text} />
-          <ListItem key="4" title="Patients" titleStyle={styles.text} subtitle="Get Deets" subtitleStyle={styles.subtitle}/>
-          <ListItem key="5" title="Clinics" titleStyle={styles.text} subtitle="Get Deets" subtitleStyle={styles.subtitle}/>
         </View>
       </Card>
     );
