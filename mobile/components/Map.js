@@ -4,9 +4,6 @@ import { MapView } from "expo"
 
 const Marker = MapView.Marker
 
-
-
-
 export default class Map extends Component {
 
   regNotification(){
@@ -18,14 +15,12 @@ export default class Map extends Component {
 
       <Marker key={i} coordinate={place.coords}> 
         <MapView.Callout>
-          <View style={styles.callout}>
-            <Text >{`${place.wait_time} Mins - ${place.name}`} </Text>
-            { this.props.displayName ? <Button title={`Get in line`} onPress={() => this.regNotification()} /> : null}
+          <View >
+            <Text style={{alignSelf: "center"}}>{`${place.wait_time} Mins - ${place.name}`} </Text>
+            { this.props.displayName ? <Button title={`Get in line`} onPress={() => this.regNotification()} /> : <Button title="Login or Register to Get in Line" onPress={() => this.props.toggleMenu()}/>}
           </View>
         </MapView.Callout>
       </Marker>
-
-
     ))
   }
   
@@ -41,6 +36,7 @@ export default class Map extends Component {
     )
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

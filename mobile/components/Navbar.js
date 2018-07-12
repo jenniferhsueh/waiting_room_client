@@ -12,7 +12,10 @@ export default class Navbar extends Component {
       <View style={styles.container}>
         <Header
         outerContainerStyles={{ backgroundColor: "#478bb5" }}
-          centerComponent={{ text:`${this.props.displayName}` ? `Hello ${this.props.displayName}` : "Waiting Room", style: { color: "#fff", fontSize:25 } }}
+          centerComponent={{ 
+            text:`${this.props.displayName}` ? `Hello ${this.props.displayName}` : "Waiting Room", 
+            style: { color: "#fff", fontSize: 25, fontWeight: "bold" } 
+          }}
           rightComponent={{ icon: "menu", color: "#fff", onPress: () => this.props.toggleMenu() }}
         />
       </View>
