@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
       t.json('hours');
       t.integer('avg_wait_time');
       t.json('location');
+      t.string('website');
       t.json('coordinates');
     })
   ])

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { StyleSheet, Text, View, ScrollView, Linking } from "react-native"
+import { StyleSheet, Button, Text, View, ScrollView, Linking } from "react-native"
 import { ListItem } from "react-native-elements"
 
 export default class ListEntry extends Component {
@@ -13,10 +13,11 @@ export default class ListEntry extends Component {
             <ListItem
               hideChevron={true}
               key={i}
-            title={place.name}
+              title={place.name}
               subtitle={
                 <View>
                   <Text>{place.phone}</Text>
+                  <Text>{place.location.address1}</Text>
                   <Text onPress={() => Linking.openURL(place.website)} style={{color: "blue"}} >See Reviews</Text>
                 </View>
               }
@@ -26,9 +27,12 @@ export default class ListEntry extends Component {
               rightTitleStyle={{color: "black", fontSize: 20}}
               rightTitleNumberOfLines={ 2 }
               
+              
               containerStyle={{height: 100}}
               subtitleContainerStyle={{height: 60, paddingLeft: 10 }}
-            />
+              >
+              <Button title="get in line" />
+            </ListItem>
           ))
         }
         </ScrollView>

@@ -7,7 +7,7 @@ export default class NavButtons extends Component {
     super()
     this.state = {
       selectedIndex: 2,
-      currView: "List"
+      currView: "List of Walk-in Clinics"
     }
     this.updateIndex = this.updateIndex.bind(this)
   }
@@ -15,9 +15,9 @@ export default class NavButtons extends Component {
     switch (touchedButton) {
       case 0:
         this.props.toggleView();
-        this.state.currView === "Map" ? 
-        this.state.currView = "List" : 
-        this.state.currView = "Map";
+        this.state.currView === "Map of Walk-in Clinics" ? 
+        this.state.currView = "List of Walk-in Clinics" : 
+        this.state.currView = "Map of Walk-in Clinics";
         break;
       case 1:
         console.log("Favs button")
@@ -34,7 +34,7 @@ export default class NavButtons extends Component {
 
   render () {
     const { selectedIndex, currView } = this.state
-    const buttons = [currView, "★", "Filter"]
+    const buttons = [currView]
   
     return (
       <View style={styles.container} >

@@ -9,12 +9,12 @@ Amplify.configure(config)
 
 export default class Register extends Component {
   state = {
-    name: '',
-    username: '',
-    password: '',
-    phone_number: '',
-    email: '',
-    confirmationCode: ''
+    name: "",
+    username: "",
+    password: "",
+    phone_number: "",
+    email: "",
+    confirmationCode: ""
   }
   onChangeText(key, value) {
     this.setState({
@@ -22,11 +22,9 @@ export default class Register extends Component {
     })
   }
   
-
   signUp() {
-    console.log("REGISTERINGGGGGGG ==============>");
     Auth.signUp({ 
-     username: this.state.username,
+      username: this.state.username,
       password: this.state.password,
       attributes: {
         email: this.state.email,
@@ -34,93 +32,84 @@ export default class Register extends Component {
       }
     })
     .then(res => {
-      console.log('successful registration: ', res)
+      console.log("successful registration: ", res)
     })
     .catch(err => {
-      console.log('error registering: ', err)
+      console.log("error registering: ", err)
     })
   }
   confirmSignUp() {
-    console.log("CONFIRMATION REGISTRATION ==============>");
     Auth.confirmSignUp(this.state.username, this.state.confirmationCode)
-      .then(res => {
-        console.log('successful confirmation: ', res)
-      })
-      .catch(err => {
-        console.log('error confirming user: ', err)
-      })
+    .then(res => {
+      console.log("successful confirmation: ", res)
+    })
+    .catch(err => {
+      console.log("error confirming user: ", err)
+    })
   }
-
+  
   render() {
     return (
       <View Style={styles.regContainer}>
         <FormInput 
-          onChangeText={value => this.onChangeText('namename', value)}
-          placeholder="Name"
           autoFocus={true}
-          name="name" 
+          placeholder="Name"
           returnKeyType="next"
+          onChangeText={value => this.onChangeText("name", value)}
           onSubmitEditing={() => this.emailInput.focus()}
-        />
+          />
         <FormInput
-          onChangeText={value => this.onChangeText('username', value)}
-          style={styles.input}
-          keyboardType="email-address"
           placeholder="Email"
+          keyboardType="email-address"
           returnKeyType="next"
+          onChangeText={value => this.onChangeText("username", value)}
           onSubmitEditing={() => this.emailConfInput.focus()}
           ref={(input) => this.emailInput = input}
-        />
+          />
         <FormInput
-          onChangeText={value => this.onChangeText('email', value)}
-          style={styles.input}
-          keyboardType="email-address"
           placeholder="Confirm Email"
+          keyboardType="email-address"
           returnKeyType="next"
+          onChangeText={value => this.onChangeText("email", value)}
           onSubmitEditing={() => this.phoneInput.focus()}
           ref={(input) => this.emailConfInput = input}
-        />
-         <FormInput 
-          onChangeText={value => this.onChangeText('phone_number', value)}
-          style={styles.input}
+          />
+        <FormInput 
           placeholder="Phone Number"
           keyboardType="phone-pad" 
-          name="phoneNumber" 
           returnKeyType="next"
+          onChangeText={value => this.onChangeText("phone_number", value)}
           onSubmitEditing={() => this.passwordInput.focus()}
           ref={(input) => this.phoneInput = input}
-        />
+          />
         <FormInput
-          onChangeText={value => this.onChangeText('password', value)}
-          style={styles.input}
-          placeholder="Password"
           secureTextEntry={true}
+          placeholder="Password"
           returnKeyType="next"
+          onChangeText={value => this.onChangeText("password", value)}
           onSubmitEditing={() => this.passConf.focus()}
           ref={(input) => this.passwordInput = input}
-        />
+          />
         <FormInput
-          onChangeText={value => this.onChangeText('password_confirmation', value)}
-          style={styles.input}
-          placeholder="Confirm Password"
           secureTextEntry={true}
+          placeholder="Confirm Password"
           returnKeyType="done"
+          onChangeText={value => this.onChangeText("password_confirmation", value)}
           ref={(input) => this.passConf = input}
-        />
+          />
         <Button 
           buttonStyle={styles.button}
           raised
-          title='Register'
+          title="Register"
           onPress={() => {
             this.signUp();
           }}>
         </Button>
         <FormInput
+          placeholder="Confirmation Code"
           keyboardType="numeric"
-          onChangeText={value => this.onChangeText('confirmationCode', value)}
-          style={styles.input}
-          placeholder='Confirmation Code'
-        />
+          onChangeText={value => this.onChangeText("confirmationCode", value)}
+          />
         <Button 
           buttonStyle={styles.button}
           title="Confirm Registration" 
@@ -128,17 +117,10 @@ export default class Register extends Component {
             this.confirmSignUp();
             this.props.setModalVisible(false);
             this.props.toggleMenu();
+            this.props.displayName(this.state.name);
           }}
-        />
+          />
       </View>
     )
   }
 }
-
-/*
-
-  onPress={this.confirmSignUp.bind(this)} />
-
-*/
-
-
