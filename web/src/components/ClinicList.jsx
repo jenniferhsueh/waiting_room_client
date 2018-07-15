@@ -20,7 +20,7 @@ class ClinicList extends Component {
   render() {
     return (
       <div className="list-container">
-        <div className="title-bar">Walk-in Clinics Nearby</div>
+        <div className="title-bar">Nearby Walk-in Clinics</div>
         <div className="list-container">
 
           {this.props.clinicList.map(clinic => <ClinicListItem
@@ -33,6 +33,7 @@ class ClinicList extends Component {
             />)}
 
           {this.state.modalClinic && <ClinicModal
+            currentUser={ this.props.currentUser }
             item={this.state.modalClinic}
             onCloseModal={this.onCloseModal} />}
         </div>
