@@ -1,0 +1,50 @@
+#nav {
+  background-color: rgba(46,120,164, 0.8);
+  border-bottom: 1px solid #2E78A4;
+  /*width: 100%;*/
+  padding-left: 15px;
+  padding-top: 15px;
+  /*overflow: auto;*/
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 120px;
+}
+
+.user-name.navbar-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  border-right: 4px solid #CE2D39;
+  padding-right: 40px;
+  margin-right: 25px;
+  text-align: center;
+  overflow: hidden;
+}
+
+
+img {
+  margin-left: 7em;
+  width: 4.5em;
+  animation: App-logo-spin infinite 60s linear;
+  height:80px;
+  }
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.text-logo {
+  color:#fff;
+  font-family: 'Cookie', cursive;
+  font-size: 70px;
+  margin-top: 1px;
+  margin-left: 30px;
+  text-shadow: 0px 3px 2px rgb(66, 64, 59);
+}
+
+.navbar-right a {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}

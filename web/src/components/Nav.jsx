@@ -20,22 +20,19 @@ class Nav extends Component {
     this.props.getCurrentUser(null)
   }
 
-  toggleView = () => {
-    if(!this.props.currentUser) {
 
-    } else {
-
-    }
-    if (this.props.currentUser && this.props.currentUser.clinics_id) {
-      if (this.props.openClinicView) {
-        return (<div className="item" onClick={ this.props.toggleClinic }>Map</div>)
-      } else {
-        return (<div className="item" onClick={ this.props.toggleClinic } >My Clinic</div>)
-      }
-    } else {
-      return ""
-    }
-  }
+//Use function below to toggle between map and portal once clinic portal is integrated
+  // toggleView = () => {
+  //   if (this.props.currentUser && this.props.currentUser.clinics_id) {
+  //     if (this.props.openClinicView) {
+  //       return (<div className="item" onClick={ this.props.toggleClinic }>Map</div>)
+  //     } else {
+  //       return (<div className="item" onClick={ this.props.toggleClinic } >My Clinic</div>)
+  //     }
+  //   } else {
+  //     return ""
+  //   }
+  // }
 
   getClinicNameForCurrentUser = () => {
     let clinName;
