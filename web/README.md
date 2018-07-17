@@ -6,14 +6,10 @@
 
 ## Screenshots
 
+![register](https://github.com/jenniferhsueh/waiting_room_client/blob/master/docs/waiting-room-ss-2.png)
 
-![allow-location]()
+![allow-location](https://github.com/jenniferhsueh/waiting_room_client/blob/master/docs/waiting-room-ss-1.png)
 
+![clinic-modal](https://github.com/jenniferhsueh/waiting_room_client/blob/master/docs/waiting-room-ss-3.png)
 
-![clinic-modal]()
-
-
-![register]()
-
-
-![clinic-portal]()
+![clinic-portal](https://github.com/jenniferhsueh/waiting_room_client/blob/master/docs/waiting-room-ss-4.png)
