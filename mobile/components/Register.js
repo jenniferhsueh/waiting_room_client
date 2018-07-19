@@ -71,17 +71,10 @@ export default class Register extends Component {
           keyboardType="email-address"
           returnKeyType="next"
           onChangeText={value => this.onChangeText("email", value)}
-          onSubmitEditing={() => this.phoneInput.focus()}
+          onSubmitEditing={() => this.passwordInput.focus()}
           ref={(input) => this.emailConfInput = input}
           />
-        <FormInput 
-          placeholder="Phone Number"
-          keyboardType="phone-pad" 
-          returnKeyType="next"
-          onChangeText={value => this.onChangeText("phone_number", value)}
-          onSubmitEditing={() => this.passwordInput.focus()}
-          ref={(input) => this.phoneInput = input}
-          />
+       
         <FormInput
           secureTextEntry={true}
           placeholder="Password"
@@ -93,10 +86,17 @@ export default class Register extends Component {
         <FormInput
           secureTextEntry={true}
           placeholder="Confirm Password"
-          returnKeyType="done"
+          returnKeyType="next"
           onChangeText={value => this.onChangeText("password_confirmation", value)}
+          onSubmitEditing={() => this.phoneInput.focus()}
           ref={(input) => this.passConf = input}
           />
+        <FormInput 
+          placeholder="Phone Number"
+          keyboardType="phone-pad" 
+          onChangeText={value => this.onChangeText("phone_number", value)}
+          ref={(input) => this.phoneInput = input}
+        />
         <Button 
           buttonStyle={styles.button}
           raised

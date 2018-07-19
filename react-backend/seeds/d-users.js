@@ -23,28 +23,6 @@ exports.seed = function(knex, Promise) {
             long: "-87.669449"
           },
           clinics_id: 1
-        },
-        {
-          first_name: "Joel",
-          last_name: "Shinness",
-          phone: 6043151860,
-          email: "joel@jenn.com",
-          password: "joel",
-          deposit: true,
-          location: {
-            address1:"534 W Pender St",
-            address2: "",
-            address3: "",
-            city: "Vancouver",
-            state: "BC",
-            Zipcode: "V6B 1V3",
-            country: "Canada",
-          },
-          coordinates: {
-            lat: "49.283599",
-            long: "-123.113811"
-          },
-          clinics_id: 2
         }
       ]);
     });

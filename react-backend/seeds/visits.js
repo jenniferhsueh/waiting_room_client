@@ -5,11 +5,6 @@ exports.seed = function(knex, Promise) {
         {
           waiting: true,
           users_id: 1,
-          clinics_id: 2
-        },
-        {
-          waiting: true,
-          users_id: 2,
           clinics_id: 1
         }
       ]);
