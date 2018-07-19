@@ -7,6 +7,7 @@ class MyClinic extends Component {
 
   state = {
     open: false,
+    otherOpen: false,
     minutes: '',
     clinicName: ''
   }
@@ -16,12 +17,15 @@ class MyClinic extends Component {
   };
 
   onCloseModal = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, otherOpen: false });
   };
 
   onButtonClick = (mins) => {
     this.props.waitMinutes(mins)
     this.onCloseModal()
+    this.setState({
+      otherOpen: true
+    })
   };
 
   handleChange = (e) => {
@@ -46,13 +50,9 @@ class MyClinic extends Component {
   }
 
   render() {
-    const { open } = this.state;
+    const { open, otherOpen } = this.state;
     return (
       <div className="clinic-portal">
-        <div className="nothing">
-        <div className="something"> something </div>
-
-        </div>
         <div className="item" onClick={ this.onOpenModal }>
           My Clinic
         </div>
@@ -77,6 +77,12 @@ class MyClinic extends Component {
             onClick={() => this.onButtonClick(this.state.minutes) }>
             Update
           </button>
+        </Modal>
+        <Modal
+          className="my-clinic"
+          open={ otherOpen } onClose={ this.onCloseModal }
+          center>
+          <div>Thank you. The wait time for { this.getClinicNameForCurrentUser() } has been set to { this.state.minutes } mins</div>
         </Modal>
       </div>
     )

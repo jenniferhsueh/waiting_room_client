@@ -1,19 +1,22 @@
 .nav {
-  background-color: #69AFBA;
+  background-color: rgba(46,120,164, 0.8);
   display: flex;
-  height: 85px;
+  border-bottom: 1px solid #2E78A4;
+  height: 100px;
   width: 100%;
   padding-left: 15px;
   padding-top: 15px;
   overflow: auto;
-  -webkit-box-shadow: 0px 6px 46px -8px rgba(0,0,0,0.5);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+/*  -webkit-box-shadow: 0px 6px 46px -8px rgba(0,0,0,0.5);
   -moz-box-shadow: 0px 6px 46px -8px rgba(0,0,0,0.5);
-  box-shadow: 0px 6px 46px -8px rgba(0,0,0,0.5);
+  box-shadow: 0px 6px 46px -8px rgba(0,0,0,0.5);*/
 }
 
 .nav img {
-  width: 76px;
-  margin-bottom: 9px;
+  margin-left: 7em;
+  width: 4.5em;
   animation: App-logo-spin infinite 60s linear;
   height:80px;
   }
@@ -26,10 +29,9 @@
 .nav .text-logo {
   color:#fff;
   font-family: 'Cookie', cursive;
-  margin-left: 10px;
-  font-size: 32px;
-  margin-top: 23px;
-  transform: rotate(-1deg);
+  font-size: 70px;
+  margin-top: 1px;
+  margin-left: 30px;
   text-shadow: 0px 3px 2px rgb(66, 64, 59);
 }
 
@@ -37,13 +39,13 @@
   color: #fff;
   display: flex;
   padding-right: 25px;
-  margin-left: auto;
-  margin-top: 2.9%;
+  justify-content: flex-end;
+  flex-grow: 1;
+  align-items: center;
 }
 
 .nav-right .item {
   margin-right: 10px;
-
   font-family: 'Montserrat', sans-serif;
   font-size: 22px;
   display: flex;
@@ -52,13 +54,17 @@
 }
 
 .item:hover {
-  text-shadow: 0px 3px 2px rgba(150, 150, 150, 1);
+  border-bottom: 4px solid #CE2D39;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .nav-right .user-name {
+  border-right: 2px solid #fff;
+  padding-right: 65px;
+  margin-right: 65px;
   font-family: 'Montserrat', sans-serif;
   font-size: 22px;
   display: flex;
-  padding:10px;
   justify-content: space-around;
 }

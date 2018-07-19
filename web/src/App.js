@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import FadeIn from 'react-fade-in';
 import './App.css';
 import LoadScreen from './components/LoadScreen';
-import Nav from './components/Nav';
+// import Nav from './components/Nav';
+import NavBootstrap from './components/NavBootstrap';
 import ClinicList from './components/ClinicList';
 import MapBox from './components/MapBox';
 
@@ -10,7 +11,7 @@ import MapBox from './components/MapBox';
 class App extends Component {
 
   state = {
-    loading: false,
+    loading: true,
     currentUser: null,
     clinics: [],
     openClinicView: false
@@ -32,32 +33,28 @@ class App extends Component {
       .then(results => {
         return results.json();
       }).then(data => {
-        const clinics = []
-        data.businesses.map(clinic => {
-          let clinicDetails = {
-            id: clinic.id,
-            name: clinic.name,
-            location: clinic.location,
-            coordinates: clinic.coordinates,
-            wait_time: (Math.floor(Math.random() * 60))
-          }
-          clinics.push(clinicDetails)
-        })
+        const clinics = data.businesses.map(clinic => ({
+                    id: clinic.id,
+                    name: clinic.name,
+                    location: clinic.location,
+                    coordinates: clinic.coordinates,
+                    wait_time: (Math.floor(Math.random() * 60))
+                  }))
+        console.log('this.state.clinics from App.js =======> ', clinics)
         this.setState({ clinics })
       })
     }
-
-    // setTimeout(() => this.setState({
-    //   loading: false
-    // }),1200);
+    setTimeout(() => this.setState({
+      loading: false
+    }),1000);
   }
 
   getCurrentUser = (user) => {
     if(user) {
       navigator.geolocation.getCurrentPosition((position) => {
         const coordinates = {
-          lat: position.coords.latitude,
-          long: position.coords.longitude
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
         }
         console.log('users not empty')
         this.setState((prevState) => {
@@ -95,10 +92,10 @@ class App extends Component {
     } else {
       return (
       <div className="main-container">
-        <Nav openClinicView={ this.state.openClinicView } toggleClinic={ this.toggleClinic } waitTime={ this.getWaitTime } clinic={ this.state.clinics } currentUser={ this.state.currentUser } getCurrentUser={ this.getCurrentUser }/>
+      <NavBootstrap openClinicView={ this.state.openClinicView } toggleClinic={ this.toggleClinic } waitTime={ this.getWaitTime } clinic={ this.state.clinics } currentUser={ this.state.currentUser } getCurrentUser={ this.getCurrentUser }/>
         <FadeIn transitionDuration={ 2000 }>
           <div className="body-container">
-            <ClinicList clinicList={ this.state.clinics }/>
+            <ClinicList clinicList={ this.state.clinics } currentUser={ this.state.currentUser }/>
             <MapBox openClinicView={ this.state.openClinicView } clinics={ this.state.clinics } currentUser={ this.state.currentUser } waitTime={ this.getWaitTime }/>
           </div>
         </FadeIn>

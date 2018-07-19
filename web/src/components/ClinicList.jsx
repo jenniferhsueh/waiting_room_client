@@ -20,15 +20,23 @@ class ClinicList extends Component {
   render() {
     return (
       <div className="list-container">
-        {this.props.clinicList.map(clinic => <ClinicListItem
-          key={clinic.id}
-          openModal={() => this.onListItemClick(clinic)}
-          item={clinic}/>)}
+        <div className="title-bar">Nearby Walk-in Clinics</div>
+        <div className="list-container">
 
-        {this.state.modalClinic && <ClinicModal
-          item={this.state.modalClinic}
-          onCloseModal={this.onCloseModal} />}
+          {this.props.clinicList.map(clinic => <ClinicListItem
+            clinic={ this.props.clinicList }
+            currentUser={ this.props.currentUser }
+            key={clinic.id}
+            openModal={() => this.onListItemClick(clinic)}
+            item={clinic}
 
+            />)}
+
+          {this.state.modalClinic && <ClinicModal
+            currentUser={ this.props.currentUser }
+            item={this.state.modalClinic}
+            onCloseModal={this.onCloseModal} />}
+        </div>
       </div>
     )
   }
