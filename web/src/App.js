@@ -11,7 +11,7 @@ import MapBox from './components/MapBox';
 class App extends Component {
 
   state = {
-    loading: true,
+    loading: false,
     currentUser: null,
     clinics: [],
     openClinicView: false
