@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const API_KEY = YELP_API_KEY
 const api = axios.create({
-  baseURL: 'http://10.30.22.172:8080',
+  baseURL: 'https://api.yelp.com/v3',
 })
 
 const getClinics = userLocation => {

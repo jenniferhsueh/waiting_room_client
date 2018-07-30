@@ -2,6 +2,10 @@
 
 Tired of waiting in the long lines at walk-in clinics? Frustrated with getting to a walk-in clinic and being turned away because they are already booked for the day and are no longer taking patients? Built with React and React Native using Expo, Waiting Room is a full stack app that aims to solve these problems by allowing its users to see the current wait times and locations of walk-in clinics in their area on web or mobile. Users who are logged in have the option of booking an appointment at their convenience. Clinic users who are logged in have the ability to update their Clinic's wait time as often as they like with the simple touch of a button. As we continue to build this App, we look to extend these services to other businesses that also require wait times.
 
+## Tech Stack
+
+Built with React and React Native using Expo on the front end, and Express, Knex, and PostgreSQL on the back end. Utilized AWS Identity and Access Management (IAM), AWS Amplify, AWS Mobile Hub, and Amazon Cognito for user authentication and to store mobile user data.
+
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository.

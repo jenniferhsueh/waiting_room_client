@@ -7,11 +7,10 @@ import NavBootstrap from './components/NavBootstrap';
 import ClinicList from './components/ClinicList';
 import MapBox from './components/MapBox';
 
-
 class App extends Component {
 
   state = {
-    loading: false,
+    loading: true,
     currentUser: null,
     clinics: [],
     openClinicView: false
@@ -27,8 +26,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if(this.state.clinics.length) {
-    } else {
+    if(this.state.clinics.length == 0) {
       fetch('/businesses')
       .then(results => {
         return results.json();
